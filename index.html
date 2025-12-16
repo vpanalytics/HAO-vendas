@@ -4225,124 +4225,126 @@ function renderProdutosLista() {
 }
 
 
-    function setupProdutosInteractivity() {
-        // Lógica do modal de confirmação
-        let confirmCallback = null;
-        modalConfirmBtn.addEventListener('click', () => {
-            if (confirmCallback) {
-                confirmCallback();
-            }
-            modal.classList.add('hidden');
-        });
-        modalCancelBtn.addEventListener('click', () => {
+ // ==========================================================
+//       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO setupProdutosInteractivity
+// ==========================================================
+
+function setupProdutosInteractivity() {
+    // Lógica do modal de confirmação (essencial para os botões)
+    let confirmCallback = null;
+    modalConfirmBtn.addEventListener('click', () => {
+        if (confirmCallback) {
+            confirmCallback();
+        }
+        modal.classList.add('hidden');
+    });
+    modalCancelBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        renderProdutosLista(); // Redesenha a lista para cancelar qualquer edição em andamento
+    });
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
             modal.classList.add('hidden');
             renderProdutosLista();
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-                renderProdutosLista();
-            }
-        });
+        }
+    });
 
-// >>>>> COLE ESTE NOVO CÓDIGO NO LUGAR DO ANTIGO <<<<<
-        produtosListaBody.addEventListener('click', async (e) => {
-            const target = e.target;
-            const produtoRow = target.closest('tr');
-            if (!produtoRow) return;
+    // Lógica principal para interagir com a tabela de produtos
+    produtosListaBody.addEventListener('click', async (e) => {
+        const target = e.target;
+        const produtoRow = target.closest('tr');
+        if (!produtoRow) return;
 
-            // A lógica de edição de valor agora é async
-            if (target.closest('.edit-valor-btn')) {
-                const editBtn = target.closest('.edit-valor-btn');
-                const id = editBtn.dataset.id;
-                const produto = produtos.find(p => p.id == id);
-                if (!produto) return;
+        // --- LÓGICA PARA EDITAR O VALOR ---
+        if (target.closest('.edit-valor-btn')) {
+            const editBtn = target.closest('.edit-valor-btn');
+            const id = editBtn.dataset.id;
+            const produto = produtos.find(p => p.id == id);
+            if (!produto) return;
 
-                const valorContainer = produtoRow.querySelector('.produto-valor-container');
-                if (valorContainer.querySelector('input')) return;
+            const valorContainer = produtoRow.querySelector('.produto-valor-container');
+            if (valorContainer.querySelector('input')) return; // Já está em modo de edição
 
-                const valorDisplay = valorContainer.querySelector('.produto-valor-display');
-                
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.className = 'produto-valor-input';
-                input.value = produto.valor;
-                
-                valorDisplay.innerHTML = '';
-                valorDisplay.appendChild(input);
-                input.focus();
-                input.select();
+            const valorDisplay = valorContainer.querySelector('.produto-valor-display');
+            
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'produto-valor-input';
+            input.value = produto.valor;
+            
+            valorDisplay.innerHTML = '';
+            valorDisplay.appendChild(input);
+            input.focus();
+            input.select();
 
-                const saveChanges = () => {
-                    const novoValor = parseFloat(input.value);
-                    if (!isNaN(novoValor) && novoValor >= 0 && novoValor !== produto.valor) {
-                        modalMessage.textContent = `Deseja alterar o valor de venda do modelo "${produto.modelo}"?`;
-                        modal.classList.remove('hidden');
-                        
-                        confirmCallback = async () => {
-                            try {
-                                // ATUALIZA O DOCUMENTO NO FIREBASE
-                                await db.collection('produtos').doc(id).update({
-                                    valor: novoValor,
-                                    ultimaAlteracao: new Date().toISOString()
-                                });
-                                // Recarrega os dados para refletir a mudança
-                                await loadDataFromFirebase();
-                            } catch (error) {
-                                console.error("Erro ao atualizar valor do produto:", error);
-                                alert("Não foi possível atualizar o valor do produto.");
-                            }
-                        };
-                    } else {
-                        renderProdutosLista();
-                    }
-                };
-
-                input.addEventListener('blur', saveChanges);
-                input.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter') input.blur();
-                    else if (event.key === 'Escape') renderProdutosLista();
-                });
-            }
-
-            // A lógica de mudança de status agora é async
-            if (target.classList.contains('status-dot')) {
-                const id = target.dataset.id;
-                const produto = produtos.find(p => p.id == id);
-                if (produto) {
-                    try {
-                        // ATUALIZA O DOCUMENTO NO FIREBASE
-                        await db.collection('produtos').doc(id).update({
-                            ativo: !produto.ativo
-                        });
-                        // Recarrega os dados para refletir a mudança
-                        await loadDataFromFirebase();
-                    } catch (error) {
-                        console.error("Erro ao atualizar status do produto:", error);
-                        alert("Não foi possível atualizar o status do produto.");
-                    }
-                }
-            }
-
-            if (target.closest('.delete-produto-btn')) {
-                const deleteBtn = target.closest('.delete-produto-btn');
-                const id = deleteBtn.dataset.id;
-                const produto = produtos.find(p => p.id == id);
-
-                if (produto) {
-                    // 1. Abre o modal de confirmação
-                    modalMessage.textContent = `Tem certeza que deseja excluir o modelo "${produto.modelo}"? Esta ação não pode ser desfeita.`;
+            const saveChanges = () => {
+                const novoValor = parseFloat(input.value);
+                if (!isNaN(novoValor) && novoValor >= 0 && novoValor !== produto.valor) {
+                    modalMessage.textContent = `Deseja alterar o valor de venda do modelo "${produto.modelo}"?`;
                     modal.classList.remove('hidden');
-
-                    // 2. Define o que acontece quando o usuário clica em "Confirmar"
-                    confirmCallback = () => {
-                        deleteProduto(id); // Chama a função que realmente deleta
+                    
+                    confirmCallback = async () => {
+                        try {
+                            await db.collection('produtos').doc(id).update({
+                                valor: novoValor,
+                                ultimaAlteracao: new Date().toISOString()
+                            });
+                            await loadDataFromFirebase();
+                        } catch (error) {
+                            console.error("Erro ao atualizar valor do produto:", error);
+                            alert("Não foi possível atualizar o valor do produto.");
+                        }
                     };
+                } else {
+                    renderProdutosLista(); // Restaura se o valor for inválido ou não mudar
+                }
+            };
+
+            input.addEventListener('blur', saveChanges);
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') input.blur();
+                else if (event.key === 'Escape') renderProdutosLista();
+            });
+        }
+
+        // --- LÓGICA PARA ALTERAR O STATUS (ATIVO/INATIVO) ---
+        if (target.classList.contains('status-dot')) {
+            const id = target.dataset.id;
+            const produto = produtos.find(p => p.id == id);
+            if (produto) {
+                try {
+                    await db.collection('produtos').doc(id).update({
+                        ativo: !produto.ativo
+                    });
+                    await loadDataFromFirebase();
+                } catch (error) {
+                    console.error("Erro ao atualizar status do produto:", error);
+                    alert("Não foi possível atualizar o status do produto.");
                 }
             }
-        });
+        }
 
-    }
+        // --- LÓGICA PARA EXCLUIR O PRODUTO ---
+        if (target.closest('.delete-produto-btn')) {
+            const deleteBtn = target.closest('.delete-produto-btn');
+            const id = deleteBtn.dataset.id;
+            const produto = produtos.find(p => p.id == id);
+
+            if (produto) {
+                modalMessage.textContent = `Tem certeza que deseja excluir o modelo "${produto.modelo}"? Esta ação não pode ser desfeita.`;
+                modal.classList.remove('hidden');
+
+                confirmCallback = () => {
+                    deleteProduto(id); // Chama a função que realmente deleta
+                };
+            }
+        }
+    });
+}
+
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
 
 // ==========================================================
 //       INÍCIO DA AÇÃO 1: RESTAURAR populateFilters
@@ -5625,3 +5627,4 @@ function renderAll() {
 
 
 | VP Analytics
+
