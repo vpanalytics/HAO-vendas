@@ -1256,9 +1256,29 @@ tr:hover .btn-edit-comissao {
 
     /* --- AJUSTES GERAIS DE ESPAÇAMENTO --- */
     .app-container { padding: 10px; }
-    .filters-container { flex-direction: column; gap: 20px; padding: 20px; }
+  .filters-container {
+    flex-direction: column;
+    align-items: stretch; /* Faz os itens ocuparem a largura total */
+    gap: 20px;
+}
+.filters-container .filter-group {
+    flex-direction: column;
+    align-items: stretch; /* Alinha os itens para ocuparem a largura */
+    gap: 15px; /* Espaço entre os filtros de data */
+    width: 100%; /* Garante que o grupo ocupe todo o espaço do contêiner */
+}
+.filters-container .filter-group .form-group {
+    display: flex;
+    flex-direction: column; /* Empilha o label sobre o input */
+    align-items: flex-start; /* Alinha o label à esquerda */
+    width: 100%;
+    margin-bottom: 0; /* Remove a margem padrão para usar o 'gap' */
+}
 
-
+/* 4. Ajusta o label para ter um espaçamento melhor */
+.filters-container .filter-group .form-group label {
+    margin-bottom: 5px;
+}
     /* --- 1. MELHORIAS NO CABEÇALHO PRINCIPAL (HEADER) --- */
 
     /* Container principal do header */
@@ -1601,26 +1621,49 @@ tr:hover .btn-edit-comissao {
         <main>
             <!-- SEÇÃO 1: DASHBOARD -->
             <section id="dashboard" class="tab-content active-content">
-                <div class="filters-container">
-                    <div class="filter-group">
-                        <label for="filter-month">Mês:</label>
-                        <select id="filter-month"></select>
-                        <label for="filter-year">Ano:</label>
-                        <select id="filter-year"></select>
-                        <!-- NOVO FILTRO DE LOJA -->
-                        <label for="filter-loja">Loja:</label>
-                        <select id="filter-loja">
-                            <!-- Opções serão populadas pelo JavaScript -->
-                        </select>
-                        <!-- FIM DO NOVO FILTRO -->
-                    </div>
-                            <button id="refresh-dashboard-btn" title="Recarregar Dados">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-            </svg>
-        </button>
-                </div>
+<!-- ========================================================== -->
+<!--       INÍCIO DA AÇÃO: SUBSTITUIR FILTROS DE DATA          -->
+<!-- ========================================================== -->
+
+<!-- DENTRO DA <section id="dashboard"> -->
+<div class="filters-container">
+    
+    <!-- SUBSTITUA ESTE BLOCO -->
+    <div class="filter-group">
+        <!-- CÓDIGO ANTIGO (SERÁ REMOVIDO)
+        <label for="filter-month">Mês:</label>
+        <select id="filter-month"></select>
+        <label for="filter-year">Ano:</label>
+        <select id="filter-year"></select>
+        -->
+
+        <!-- NOVO CÓDIGO (SUBSTITUTO) -->
+        <label for="filter-start-date">Data Início:</label>
+        <input type="date" id="filter-start-date">
+        
+        <label for="filter-end-date">Data Fim:</label>
+        <input type="date" id="filter-end-date">
+        
+        <!-- O filtro de loja continua aqui, inalterado -->
+        <label for="filter-loja">Loja:</label>
+        <select id="filter-loja">
+            <!-- Opções serão populadas pelo JavaScript -->
+        </select>
+    </div>
+    <!-- FIM DO BLOCO A SER SUBSTITUÍDO -->
+
+    <button id="refresh-dashboard-btn" title="Recarregar Dados">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- ========================================================== -->
+<!--                        FIM DA AÇÃO                         -->
+<!-- ========================================================== -->
+
                 <div class="cards-container">
                     <div class="card"><h3 id="card-venda-total-label">Venda Total</h3><p id="card-venda-total">R$ 0,00</p></div>
                     <div class="card"><h3 id="card-unidades-label">Unidades</h3><p id="card-unidades">0</p></div>
@@ -2004,16 +2047,28 @@ thead>
 <!--       INÍCIO DA AÇÃO 1: ADICIONAR FILTROS E TABELA DE RESUMO      -->
 <!-- ========================================================== -->
 
-<!-- 1. Filtros de Período e Tabela de Resumo -->
 <div id="comissao-resumo-view">
-    <!-- Filtros de Mês e Ano -->
+    <!-- Filtros de Período -->
     <div class="filters-container">
+        
+        <!-- SUBSTITUA ESTE BLOCO -->
         <div class="filter-group">
+            <!-- CÓDIGO ANTIGO (SERÁ REMOVIDO)
             <label for="comissao-filter-month">Mês:</label>
             <select id="comissao-filter-month"></select>
             <label for="comissao-filter-year">Ano:</label>
             <select id="comissao-filter-year"></select>
+            -->
+
+            <!-- NOVO CÓDIGO (SUBSTITUTO) -->
+            <label for="comissao-filter-start-date">Data Início:</label>
+            <input type="date" id="comissao-filter-start-date">
+            
+            <label for="comissao-filter-end-date">Data Fim:</label>
+            <input type="date" id="comissao-filter-end-date">
         </div>
+        <!-- FIM DO BLOCO A SER SUBSTITUÍDO -->
+
     </div>
     <!-- NOVO CARD DE TOTAL A PAGAR -->
     <div class="cards-container" style="grid-template-columns: 1fr; margin-top: 25px;">
@@ -2502,23 +2557,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const detalheLojaFilter = document.getElementById('detalhe-loja-filter');
 
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO loadDataFromFirebase (FINAL)
-// ==========================================================
-
 async function loadDataFromFirebase() {
     console.log("Iniciando carregamento de dados do Firebase...");
     
     try {
-        // --- AQUI ESTÁ A CORREÇÃO ---
-        // Adicionamos 'movimentacoesEstoqueSnapshot' à lista de constantes
         const [
             lojasSnapshot, 
             vendasSnapshot, 
             produtosSnapshot, 
             historicoComissaoSnapshot,
             historicoAluguelSnapshot,
-            movimentacoesEstoqueSnapshot // <-- A VARIÁVEL QUE FALTAVA
+            movimentacoesEstoqueSnapshot
         ] = await Promise.all([
             db.collection('lojas').get(),
             db.collection('vendas').get(),
@@ -2527,13 +2576,11 @@ async function loadDataFromFirebase() {
             db.collection('historicoAluguel').get(),
             db.collection('movimentacoesEstoque').get()
         ]);
-        // --- FIM DA CORREÇÃO ---
 
         // Processa os resultados e preenche os arrays locais
         lojas = lojasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         vendas = vendasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         produtos = produtosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        
         historicoComissao = historicoComissaoSnapshot.docs.map(doc => {
             const data = doc.data();
             data.dataInicioVigencia = data.dataInicioVigencia.toDate();
@@ -2544,8 +2591,6 @@ async function loadDataFromFirebase() {
             data.dataInicioVigencia = data.dataInicioVigencia.toDate();
             return { id: doc.id, ...data };
         });
-
-        // Agora que 'movimentacoesEstoqueSnapshot' existe, este código funciona
         movimentacoesEstoque = movimentacoesEstoqueSnapshot.docs.map(doc => {
             const data = doc.data();
             if (data.data && typeof data.data.toDate === 'function') {
@@ -2559,16 +2604,14 @@ async function loadDataFromFirebase() {
         // Chama a renderização da aplicação APENAS após carregar tudo
         renderAll();
 
+        // ADICIONE A CHAMADA AQUI, DEPOIS DE renderAll()
+        runDashboardUpdate(); 
+
     } catch (error) {
         console.error("ERRO FATAL AO CARREGAR DADOS DO FIREBASE:", error);
         alert("Não foi possível carregar os dados da aplicação. Verifique o console (F12) para mais detalhes e recarregue a página.");
     }
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
 
 // ==========================================================
 //       INÍCIO DA AÇÃO 2: CRIAR FUNÇÃO PARA POPULAR SUGESTÕES
@@ -2843,46 +2886,77 @@ logoutButton.addEventListener('click', () => {
     loadDataFromFirebase();
 }
 
+// ==========================================================
+//       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO initializeApp COMPLETA
+// ==========================================================
 
-    // --- INICIALIZAÇÃO DA APLICAÇÃO PRINCIPAL ---
-    function initializeApp() {
-        // Inicializa a lista de produtos (limpa dados antigos)
-        const produtosIniciais = [
-            { id: 1, modelo: 'Harlley 16', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 2, modelo: 'Grazie', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 3, modelo: 'Retro', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 4, modelo: 'Maggie', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 5, modelo: 'Vitte Plus', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 6, modelo: 'Felice Duo', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 7, modelo: 'Veux', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 8, modelo: 'Bella', valor: 0, ativo: true, ultimaAlteracao: null },
-            { id: 9, modelo: 'Macchina', valor: 0, ativo: true, ultimaAlteracao: null }
-        ];
-        // Mantém os valores e status já salvos, se existirem
-        const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
-        produtos = produtosIniciais.map(pInicial => {
-            const pSalvo = produtosSalvos.find(p => p.id === pInicial.id);
-            return pSalvo ? pSalvo : pInicial;
-        });
-        localStorage.setItem('produtos', JSON.stringify(produtos));
+function initializeApp() {
+    // A lógica de produtos iniciais permanece a mesma
+    const produtosIniciais = [
+        { id: 1, modelo: 'Harlley 16', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 2, modelo: 'Grazie', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 3, modelo: 'Retro', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 4, modelo: 'Maggie', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 5, modelo: 'Vitte Plus', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 6, modelo: 'Felice Duo', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 7, modelo: 'Veux', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 8, modelo: 'Bella', valor: 0, ativo: true, ultimaAlteracao: null },
+        { id: 9, modelo: 'Macchina', valor: 0, ativo: true, ultimaAlteracao: null }
+    ];
+    const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
+    produtos = produtosIniciais.map(pInicial => {
+        const pSalvo = produtosSalvos.find(p => p.id === pInicial.id);
+        return pSalvo ? pSalvo : pInicial;
+    });
+    localStorage.setItem('produtos', JSON.stringify(produtos));
 
     // 1. Configurações visuais e de navegação
     setupNavigation();
     setupForms();
     setupProdutosInteractivity();
     
-    // 2. Popula todos os filtros da aplicação
+    // 2. CHAMA AS FUNÇÕES DE FILTRO NECESSÁRIAS
     populateFilters();
-    populateComissaoFilters();
+    populateComissaoFilters(); 
 
-  // 3. CENTRALIZA A CONFIGURAÇÃO DOS EVENTOS DE FILTRO DO DASHBOARD
+    // --- INÍCIO DA NOVA LÓGICA DE SINCRONIZAÇÃO ---
+
+    // 3. Pega a referência de todos os campos de data
+    const dashboardStartDate = document.getElementById('filter-start-date');
+    const dashboardEndDate = document.getElementById('filter-end-date');
+    const comissaoStartDate = document.getElementById('comissao-filter-start-date');
+    const comissaoEndDate = document.getElementById('comissao-filter-end-date');
     const filterLojaDashboard = document.getElementById('filter-loja');
+
+    // Define as datas padrão para os novos calendários
+    const hoje = new Date();
+    const primeiroDiaDoMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+    const dataInicialPadrao = primeiroDiaDoMes.toISOString().split('T')[0];
+    const dataFinalPadrao = hoje.toISOString().split('T')[0];
+
+    if (dashboardStartDate) dashboardStartDate.value = dataInicialPadrao;
+    if (dashboardEndDate) dashboardEndDate.value = dataFinalPadrao;
+    // A função populateComissaoFilters já define os valores padrão para a aba de comissão
+
+    // 4. Cria uma função única para lidar com a mudança de data
+    const handleDateChange = (sourceId) => {
+        syncDateFilters(sourceId); // Sincroniza os valores
+        runDashboardUpdate(); // Atualiza o Dashboard
+        renderTabelaResumoComissao(); // Atualiza a tabela de Comissão
+    };
+
+    // 5. Conecta os eventos dos 4 campos de data a essa função
+    if (dashboardStartDate) dashboardStartDate.onchange = () => handleDateChange('filter-start-date');
+    if (dashboardEndDate) dashboardEndDate.onchange = () => handleDateChange('filter-end-date');
+    if (comissaoStartDate) comissaoStartDate.onchange = () => handleDateChange('comissao-filter-start-date');
+    if (comissaoEndDate) comissaoEndDate.onchange = () => handleDateChange('comissao-filter-end-date');
     
-    if (filterMonth) filterMonth.onchange = runDashboardUpdate;
-    if (filterYear) filterYear.onchange = runDashboardUpdate;
+    // O filtro de loja do dashboard continua com seu próprio evento
     if (filterLojaDashboard) filterLojaDashboard.onchange = runDashboardUpdate;
 
-    // 4. Configuração dos botões de toggle Dia/Semana
+    // --- FIM DA NOVA LÓGICA DE SINCRONIZAÇÃO ---
+
+    // 6. Configuração dos botões de toggle Dia/Semana (inalterado)
     toggleDiaBtn.addEventListener('click', () => {
         vendaDiaContainer.classList.remove('hidden');
         vendaSemanaContainer.classList.add('hidden');
@@ -2898,8 +2972,12 @@ logoutButton.addEventListener('click', () => {
         toggleSemanaBtn.classList.add('active');
         temporalChartTitle.textContent = 'Venda por Semana';
     });
+}
 
-    }
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
+
 // ==========================================================
 //       INÍCIO DA AÇÃO 3: LÓGICA DE EDIÇÃO DA COMISSÃO
 // ==========================================================
@@ -3159,6 +3237,36 @@ function renderTabelaAnaliseComissao() {
         
         tabelaBody.innerHTML += row;
     });
+}
+
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
+// ==========================================================
+//       INÍCIO DA AÇÃO: CRIAR FUNÇÃO DE SINCRONIZAÇÃO DE DATAS
+// ==========================================================
+
+function syncDateFilters(sourceId) {
+    // 1. Pega a referência de todos os 4 campos de data
+    const dashboardStartDate = document.getElementById('filter-start-date');
+    const dashboardEndDate = document.getElementById('filter-end-date');
+    const comissaoStartDate = document.getElementById('comissao-filter-start-date');
+    const comissaoEndDate = document.getElementById('comissao-filter-end-date');
+
+    // 2. Verifica qual campo foi alterado (a "fonte" da mudança)
+    if (sourceId === 'filter-start-date') {
+        // Se a data de início do Dashboard mudou, atualiza a da Comissão
+        comissaoStartDate.value = dashboardStartDate.value;
+    } else if (sourceId === 'filter-end-date') {
+        // Se a data de fim do Dashboard mudou, atualiza a da Comissão
+        comissaoEndDate.value = dashboardEndDate.value;
+    } else if (sourceId === 'comissao-filter-start-date') {
+        // Se a data de início da Comissão mudou, atualiza a do Dashboard
+        dashboardStartDate.value = comissaoStartDate.value;
+    } else if (sourceId === 'comissao-filter-end-date') {
+        // Se a data de fim da Comissão mudou, atualiza a do Dashboard
+        dashboardEndDate.value = comissaoEndDate.value;
+    }
 }
 
 // ==========================================================
@@ -3610,30 +3718,30 @@ function populateInventarioProdutoSelect() {
 //       INÍCIO DA AÇÃO 2: LÓGICA DA TABELA DE RESUMO
 // ==========================================================
 
-// --- 1. FUNÇÃO PARA POPULAR OS FILTROS DA ABA COMISSÃO ---
+// ==========================================================
+//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO populateComissaoFilters
+// ==========================================================
+
 function populateComissaoFilters() {
-    const filterMonth = document.getElementById('comissao-filter-month');
-    const filterYear = document.getElementById('comissao-filter-year');
+    // 1. Pega a referência aos novos campos de data
+    const filterStartDate = document.getElementById('comissao-filter-start-date');
+    const filterEndDate = document.getElementById('comissao-filter-end-date');
     
-    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-    filterMonth.innerHTML = '<option value="all">Todos os Meses</option>';
-    meses.forEach((mes, index) => {
-        filterMonth.innerHTML += `<option value="${index}">${mes}</option>`;
-    });
+    // 2. Define as datas padrão (início do mês atual e hoje)
+    const hoje = new Date();
+    const primeiroDiaDoMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
 
-    const currentYear = new Date().getFullYear();
-    filterYear.innerHTML = '<option value="all">Todos os Anos</option>';
-    for (let i = currentYear; i >= currentYear - 5; i--) {
-        filterYear.innerHTML += `<option value="${i}">${i}</option>`;
-    }
+    filterStartDate.value = primeiroDiaDoMes.toISOString().split('T')[0];
+    filterEndDate.value = hoje.toISOString().split('T')[0];
 
-    filterMonth.value = new Date().getMonth();
-    filterYear.value = currentYear;
-
-    // Adiciona os "ouvintes" para atualizar a tabela quando os filtros mudarem
-    filterMonth.onchange = renderTabelaResumoComissao;
-    filterYear.onchange = renderTabelaResumoComissao;
+    // 3. Adiciona os "ouvintes" para atualizar a tabela quando as datas mudarem
+    if (filterStartDate) filterStartDate.onchange = renderTabelaResumoComissao;
+    if (filterEndDate) filterEndDate.onchange = renderTabelaResumoComissao;
 }
+
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
 
 // --- 2. FUNÇÃO PARA ENCONTRAR O ALUGUEL VIGENTE ---
 function getAluguelVigente(dataReferencia, lojaId, tipoLoja) {
@@ -3665,10 +3773,7 @@ function getAluguelVigente(dataReferencia, lojaId, tipoLoja) {
 // ==========================================================
 
 // ==========================================================
-//       INÍCIO DA AÇÃO: AJUSTAR CÁLCULO DO ALUGUEL
-// ==========================================================
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR CÁLCULO PARA VENDAS ANTIGAS
+//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO renderTabelaResumoComissao
 // ==========================================================
 
 function renderTabelaResumoComissao() {
@@ -3684,26 +3789,24 @@ function renderTabelaResumoComissao() {
         <th>A Pagar (R$)</th>
     `;
 
-    const selectedMonth = document.getElementById('comissao-filter-month').value;
-    const selectedYear = document.getElementById('comissao-filter-year').value;
+    // 1. LÊ OS NOVOS CAMPOS DE DATA DA ABA COMISSÃO
+    const startDateString = document.getElementById('comissao-filter-start-date').value;
+    const endDateString = document.getElementById('comissao-filter-end-date').value;
 
+    // 2. FILTRA AS VENDAS COM BASE NO NOVO PERÍODO
     const vendasFiltradas = vendas.filter(venda => {
-        const vendaDate = new Date(venda.data + 'T00:00:00');
-        const monthMatch = (selectedMonth === 'all') || (vendaDate.getMonth() == selectedMonth);
-        const yearMatch = (selectedYear === 'all') || (vendaDate.getFullYear() == selectedYear);
-        return monthMatch && yearMatch;
+        if (!startDateString || !endDateString) return false; // Não calcula se as datas não estiverem preenchidas
+        const vendaDate = venda.data;
+        return vendaDate >= startDateString && vendaDate <= endDateString;
     });
 
-    // --- LÓGICA DE AGRUPAMENTO ATUALIZADA ---
+    // --- O RESTANTE DA LÓGICA DE CÁLCULO PERMANECE O MESMO ---
     const comissaoPorLoja = vendasFiltradas.reduce((acc, venda) => {
+        // ... (lógica de cálculo de comissão inalterada)
         let valorComissaoDaVenda = 0;
-
-        // 1. VERIFICA SE A VENDA JÁ TEM A COMISSÃO CALCULADA E SALVA
         if (typeof venda.valorComissaoCalculado === 'number') {
-            // Se sim, usa o valor salvo. É o caso das vendas novas.
             valorComissaoDaVenda = venda.valorComissaoCalculado;
         } else {
-            // 2. SE NÃO, É UMA VENDA ANTIGA. CALCULA A COMISSÃO AGORA.
             const lojaDaVenda = lojas.find(l => l.id === venda.lojaId);
             if (lojaDaVenda) {
                 const regra = getComissaoVigente(venda.data, lojaDaVenda.id, lojaDaVenda.tipo, venda.modeloVenda);
@@ -3713,13 +3816,10 @@ function renderTabelaResumoComissao() {
                 }
             }
         }
-
-        // Adiciona o valor (calculado ou pego do cache) ao total da loja
         if (!acc[venda.lojaId]) {
             acc[venda.lojaId] = 0;
         }
         acc[venda.lojaId] += valorComissaoDaVenda;
-        
         return acc;
     }, {});
 
@@ -3728,23 +3828,29 @@ function renderTabelaResumoComissao() {
 
     lojas.forEach(loja => {
         const comissaoTotal = comissaoPorLoja[loja.id] || 0;
-
-        // Lógica do aluguel (inalterada)
+        
+        // 3. AJUSTE NO CÁLCULO DO ALUGUEL PARA USAR O PERÍODO CORRETO
         let aluguelFinal = 0;
-        if (selectedMonth !== 'all' && selectedYear !== 'all') {
-            const anoFiltrado = parseInt(selectedYear);
-            const mesFiltrado = parseInt(selectedMonth);
-            const dataInauguracao = new Date(loja.dataInauguracao + 'T00:00:00');
-            const dataReferencia = new Date(anoFiltrado, mesFiltrado + 1, 0);
-            const aluguelCheio = getAluguelVigente(dataReferencia, loja.id, loja.tipo);
+        if (startDateString && endDateString) {
+            const dataInicioFiltro = new Date(startDateString + 'T00:00:00');
+            const dataFimFiltro = new Date(endDateString + 'T00:00:00');
+            
+            // O aluguel só é calculado se o período for dentro de um único mês
+            if (dataInicioFiltro.getFullYear() === dataFimFiltro.getFullYear() && dataInicioFiltro.getMonth() === dataFimFiltro.getMonth()) {
+                const anoFiltrado = dataInicioFiltro.getFullYear();
+                const mesFiltrado = dataInicioFiltro.getMonth();
+                const dataInauguracao = new Date(loja.dataInauguracao + 'T00:00:00');
+                const dataReferencia = new Date(anoFiltrado, mesFiltrado + 1, 0);
+                const aluguelCheio = getAluguelVigente(dataReferencia, loja.id, loja.tipo);
 
-            if (dataInauguracao.getFullYear() === anoFiltrado && dataInauguracao.getMonth() === mesFiltrado) {
-                const ultimoDiaDoMes = dataReferencia.getDate();
-                const diaInauguracao = dataInauguracao.getDate();
-                const diasEmAberto = ultimoDiaDoMes - diaInauguracao + 1;
-                aluguelFinal = (aluguelCheio / ultimoDiaDoMes) * diasEmAberto;
-            } else {
-                aluguelFinal = aluguelCheio;
+                if (dataInauguracao.getFullYear() === anoFiltrado && dataInauguracao.getMonth() === mesFiltrado) {
+                    const ultimoDiaDoMes = dataReferencia.getDate();
+                    const diaInauguracao = dataInauguracao.getDate();
+                    const diasEmAberto = ultimoDiaDoMes - diaInauguracao + 1;
+                    aluguelFinal = (aluguelCheio / ultimoDiaDoMes) * diasEmAberto;
+                } else {
+                    aluguelFinal = aluguelCheio;
+                }
             }
         }
         
@@ -3766,11 +3872,6 @@ function renderTabelaResumoComissao() {
 
 // ==========================================================
 //                        FIM DA AÇÃO
-// ==========================================================
-
-
-// ==========================================================
-//                        FIM DA AÇÃO 2
 // ==========================================================
 
 
@@ -4225,7 +4326,7 @@ function renderProdutosLista() {
 }
 
 
- // ==========================================================
+// ==========================================================
 //       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO setupProdutosInteractivity
 // ==========================================================
 
@@ -4347,47 +4448,71 @@ function setupProdutosInteractivity() {
 // ==========================================================
 
 // ==========================================================
-//       INÍCIO DA AÇÃO 1: RESTAURAR populateFilters
+//       INÍCIO DA AÇÃO: RESTAURAR A FUNÇÃO populateFilters
 // ==========================================================
 
 function populateFilters() {
+    // Popula o filtro de Mês (usado na tabela de detalhamento e na aba de comissão)
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-    filterMonth.innerHTML = '<option value="all">Todos os Meses</option>';
-    meses.forEach((mes, index) => {
-        filterMonth.innerHTML += `<option value="${index}">${mes}</option>`;
-    });
-    const currentYear = new Date().getFullYear();
-    filterYear.innerHTML = '<option value="all">Todos os Anos</option>';
-    for (let i = currentYear; i >= currentYear - 5; i--) {
-        filterYear.innerHTML += `<option value="${i}">${i}</option>`;
+    if (filterMonth) { // Adiciona verificação para segurança
+        filterMonth.innerHTML = '<option value="all">Todos os Meses</option>';
+        meses.forEach((mes, index) => {
+            filterMonth.innerHTML += `<option value="${index}">${mes}</option>`;
+        });
+        filterMonth.value = new Date().getMonth();
     }
-    filterMonth.value = new Date().getMonth();
-    filterYear.value = currentYear;
-    
-    // REMOVEMOS AS LINHAS .onchange DAQUI!
+
+    // Popula o filtro de Ano
+    const currentYear = new Date().getFullYear();
+    if (filterYear) { // Adiciona verificação para segurança
+        filterYear.innerHTML = '<option value="all">Todos os Anos</option>';
+        for (let i = currentYear; i >= currentYear - 5; i--) {
+            filterYear.innerHTML += `<option value="${i}">${i}</option>`;
+        }
+        filterYear.value = currentYear;
+    }
 }
+
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
+
 
 // ==========================================================
 //                        FIM DA AÇÃO 1
 // ==========================================================
 
 // ==========================================================
-//       INÍCIO DA AÇÃO 1: RESTAURAR A FUNÇÃO ORIGINAL
+//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO getFilteredVendas
 // ==========================================================
 
 function getFilteredVendas() {
-    const selectedMonth = filterMonth.value;
-    const selectedYear = filterYear.value;
+    // 1. Pega os valores dos novos campos de data do Dashboard
+    const startDateString = document.getElementById('filter-start-date').value;
+    const endDateString = document.getElementById('filter-end-date').value;
 
+    // 2. Filtra as vendas com base no período selecionado
     return vendas.filter(venda => {
-        const vendaDate = new Date(venda.data + 'T00:00:00');
-        const monthMatch = (selectedMonth === 'all') || (vendaDate.getMonth() == selectedMonth);
-        const yearMatch = (selectedYear === 'all') || (vendaDate.getFullYear() == selectedYear);
+        // Se nenhum período for selecionado, inclui todas as vendas (segurança)
+        if (!startDateString || !endDateString) {
+            return true;
+        }
         
-        // A função correta para o dashboard principal só precisa disso:
-        return monthMatch && yearMatch;
+        // Pega a data da venda (que já está no formato YYYY-MM-DD)
+        const vendaDate = venda.data;
+
+        // 3. Compara as datas como strings (funciona para o formato YYYY-MM-DD)
+        const isAfterStart = vendaDate >= startDateString;
+        const isBeforeEnd = vendaDate <= endDateString;
+
+        return isAfterStart && isBeforeEnd;
     });
 }
+
+// ==========================================================
+//                        FIM DA AÇÃO
+// ==========================================================
+
 // 3. ATUALIZE A FUNÇÃO applyDashboardLojaFilter
 function applyDashboardLojaFilter(vendasParaFiltrar) {
     const userLojaId = localStorage.getItem('userLojaId');
@@ -4435,90 +4560,65 @@ function runDashboardUpdate() {
 // ==========================================================
 //                        FIM DA AÇÃO 2
 // ==========================================================
-
 // ==========================================================
-//       INÍCIO DA AÇÃO 1: RESTAURAR E AJUSTAR updateDashboard
-// ==========================================================
-// ==========================================================
-//       INÍCIO DA AÇÃO: AJUSTAR A FUNÇÃO updateDashboard
+//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO updateDashboard
 // ==========================================================
 
-// A função agora RECEBE os dados que deve usar
 function updateDashboard(vendasFiltradas) { 
     document.getElementById('venda-dia-chart').closest('.chart-wrapper').style.height = '350px';
-
-    // REMOVEMOS a linha que aplicava o filtro de loja daqui de dentro.
 
     const vendaTotal = vendasFiltradas.reduce((sum, v) => sum + (v.valor * v.quantidade), 0);
     const totalUnidades = vendasFiltradas.reduce((sum, v) => sum + v.quantidade, 0);
     const ticketMedio = totalUnidades > 0 ? vendaTotal / totalUnidades : 0;
 
-    // --- Lógica de Venda Média/Dia (inalterada) ---
-    const selectedMonth = filterMonth.value;
-    const selectedYear = filterYear.value;
-    let numeroDeDiasParaMedia;
-    const hoje = new Date();
-    const anoAtual = hoje.getFullYear();
-    const mesAtual = hoje.getMonth();
-    if (selectedMonth !== 'all' && selectedYear !== 'all') {
-        const anoSelecionadoInt = parseInt(selectedYear);
-        const mesSelecionadoInt = parseInt(selectedMonth);
-        if (anoSelecionadoInt === anoAtual && mesSelecionadoInt === mesAtual) {
-            if (vendasFiltradas.length > 0) {
-                const ultimoDiaComVenda = Math.max(...vendasFiltradas.map(v => new Date(v.data + 'T00:00:00').getDate()));
-                numeroDeDiasParaMedia = ultimoDiaComVenda;
-            } else {
-                numeroDeDiasParaMedia = 1;
-            }
-        } else {
-            numeroDeDiasParaMedia = new Date(anoSelecionadoInt, mesSelecionadoInt + 1, 0).getDate();
-        }
-    } else {
-        numeroDeDiasParaMedia = new Set(vendas.map(v => v.data)).size || 1;
+    // --- INÍCIO DA LÓGICA CORRIGIDA PARA VENDA MÉDIA/DIA ---
+    const startDateString = document.getElementById('filter-start-date').value;
+    const endDateString = document.getElementById('filter-end-date').value;
+    let numeroDeDiasParaMedia = 1; // Começa com 1 para evitar divisão por zero
+
+    if (startDateString && endDateString) {
+        const dataInicio = new Date(startDateString + 'T00:00:00');
+        const dataFim = new Date(endDateString + 'T00:00:00');
+        
+        // Calcula a diferença em milissegundos e converte para dias
+        const diffTime = Math.abs(dataFim - dataInicio);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 para incluir o dia inicial
+        
+        numeroDeDiasParaMedia = diffDays > 0 ? diffDays : 1;
     }
-    const vendaMediaDia = numeroDeDiasParaMedia > 0 ? vendaTotal / numeroDeDiasParaMedia : 0;
     
-    // --- Atualização dos cards e gráficos (inalterada) ---
+    const vendaMediaDia = vendaTotal / numeroDeDiasParaMedia;
+    // --- FIM DA LÓGICA CORRIGIDA ---
+    
+    // --- Atualização dos cards (o resto permanece igual) ---
     document.getElementById('card-venda-total').textContent = vendaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById('card-unidades').textContent = totalUnidades;
     document.getElementById('card-ticket-medio').textContent = ticketMedio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById('card-venda-media').textContent = vendaMediaDia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     
-    // --- INÍCIO DA LÓGICA CORRIGIDA PARA O CARD DE ESTOQUE ---
-    
-    // 1. Pega os dados de movimentação JÁ FILTRADOS pela nova função auxiliar
     const movimentacoesParaCalcular = getFilteredMovimentacoes();
-
-    // 2. Calcula o estoque total usando o array filtrado
     const estoqueTotal = movimentacoesParaCalcular.reduce((sum, mov) => sum + mov.quantidade, 0);
-
-    // 3. Atualiza o texto do card
     document.getElementById('card-estoque-total').textContent = estoqueTotal;
 
-    // --- FIM DA LÓGICA CORRIGIDA ---
-
+    // Chamadas para os outros gráficos (inalteradas)
     updateRankingLojasChart(vendasFiltradas);
     updateRankingModeloChart(vendasFiltradas);
     updateVendaTipoLojaChart(vendasFiltradas);
     updateVendaFormaPagamentoChart(vendasFiltradas);
     updateRankingGRCChart(vendasFiltradas);
     updateParticipacaoChart(vendasFiltradas, totalUnidades);
-    
     updateEstoquePorLojaChart();
     updateEstoquePorModeloChart();
-    
     updateVendaDiaChart(vendasFiltradas);
     updateVendaSemanaChart(vendasFiltradas);
     updateVendaMensalChart();
     updateVendaAnualChart();
-    
-    // IMPORTANTE: A tabela de detalhamento agora é chamada de outro lugar
-    // updateDetalheVendasTable(vendasFiltradas); 
 }
 
 // ==========================================================
 //                        FIM DA AÇÃO
 // ==========================================================
+
 // ==========================================================
 //       INÍCIO DA AÇÃO (PASSO 2): ATUALIZAR FUNÇÕES DE GRÁFICO
 // ==========================================================
@@ -4922,33 +5022,25 @@ function updateParticipacaoChart(vendasFiltradas) {
 // ==========================================================
 
 
-
 // ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO updateDetalheVendasTable
+//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO updateDetalheVendasTable
 // ==========================================================
 
 function updateDetalheVendasTable(vendasFiltradas) {
     const userLojaId = localStorage.getItem('userLojaId');
     const detalheLojaFilter = document.getElementById('detalhe-loja-filter');
 
-    // --- INÍCIO DA LÓGICA DE SEGURANÇA ---
+    // --- LÓGICA DE SEGURANÇA (inalterada) ---
     let lojasAtivas;
-
-    // 1. VERIFICA SE O USUÁRIO É DE UMA LOJA ESPECÍFICA
     if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
-        // Se for, a única loja ativa é a dele.
         lojasAtivas = lojas.filter(loja => loja.id === userLojaId);
-        // E o seletor de filtro de loja deve ser escondido.
         if (detalheLojaFilter && detalheLojaFilter.parentElement) {
             detalheLojaFilter.parentElement.style.display = 'none';
         }
     } else {
-        // 2. SE FOR ADMIN, A LÓGICA ANTIGA CONTINUA
-        // Garante que o filtro seja visível para o admin.
         if (detalheLojaFilter && detalheLojaFilter.parentElement) {
             detalheLojaFilter.parentElement.style.display = '';
         }
-        
         const lojaFiltradaId = detalheLojaFilter.value;
         if (lojaFiltradaId === 'all') {
             lojasAtivas = [...lojas].sort((a, b) => a.nome.localeCompare(b.nome));
@@ -4956,18 +5048,29 @@ function updateDetalheVendasTable(vendasFiltradas) {
             lojasAtivas = lojas.filter(loja => loja.id === lojaFiltradaId);
         }
     }
-    // --- FIM DA LÓGICA DE SEGURANÇA ---
 
-    // O restante da função continua exatamente como estava,
-    // pois ela já opera com base na variável 'lojasAtivas', que agora está corretamente filtrada.
-
-    const meses = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
+    // --- LÓGICA DE TÍTULO E DIAS (CORRIGIDA) ---
     const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-    const selectedMonth = parseInt(filterMonth.value);
-    const selectedYear = parseInt(filterYear.value);
-    const mesNome = selectedMonth !== 'all' ? meses[selectedMonth] : 'PERÍODO';
-    detalheVendasTitulo.textContent = `Detalhamento de Vendas - ${mesNome}`;
+    
+    // 1. LÊ OS NOVOS CAMPOS DE DATA
+    const startDateString = document.getElementById('filter-start-date').value;
+    const endDateString = document.getElementById('filter-end-date').value;
+    
+    detalheVendasTitulo.textContent = `Detalhamento de Vendas`; // Título genérico
 
+    // 2. GERA A LISTA DE DIAS COM BASE NO PERÍODO SELECIONADO
+    const diasDoPeriodo = [];
+    if (startDateString && endDateString) {
+        let currentDate = new Date(startDateString + 'T00:00:00');
+        const endDate = new Date(endDateString + 'T00:00:00');
+        while (currentDate <= endDate) {
+            diasDoPeriodo.push(currentDate.toISOString().split('T')[0]);
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    }
+
+    // --- O RESTANTE DA FUNÇÃO (CÁLCULOS E RENDERIZAÇÃO) PERMANECE O MESMO ---
+    // ... (cálculo de totaisPorLoja, totalGeralPcs, etc.) ...
     const totaisPorLoja = {};
     let totalGeralPcs = 0;
     let totalGeralValor = 0;
@@ -5004,13 +5107,10 @@ function updateDetalheVendasTable(vendasFiltradas) {
     headerHTML += '</tr>';
     detalheVendasHead.innerHTML = headerHTML;
 
-    const diasDoMes = (selectedMonth === 'all' || selectedYear === 'all') 
-        ? [...new Set(vendasFiltradas.map(v => v.data))].sort()
-        : Array.from({ length: new Date(selectedYear, selectedMonth + 1, 0).getDate() }, (_, i) => `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(i + 1).padStart(2, '0')}`);
-
     let bodyHTML = '';
     if (lojasAtivas.length > 0) {
-        diasDoMes.forEach(dataString => {
+        // 3. USA A NOVA LISTA DE DIAS
+        diasDoPeriodo.forEach(dataString => {
             const dateObj = new Date(dataString + 'T00:00:00');
             const dia = dateObj.getDate();
             const diaSemanaNome = diasSemana[dateObj.getUTCDay()];
@@ -5037,6 +5137,7 @@ function updateDetalheVendasTable(vendasFiltradas) {
 // ==========================================================
 //                        FIM DA AÇÃO
 // ==========================================================
+
 
 function updateVendaTipoLojaChart(vendasFiltradas) {
     const ctx = document.getElementById('venda-tipo-loja-chart').getContext('2d');
@@ -5627,4 +5728,5 @@ function renderAll() {
 
 
 | VP Analytics
+
 
