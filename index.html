@@ -203,7 +203,6 @@
         background-color: #0041a3;
     }
 
-
     /* ============== ESTILOS DA TELA PRINCIPAL (DASHBOARD) ============== */
     .app-container {
         position: relative;
@@ -372,8 +371,6 @@
         position: relative;
         min-height: 0;
     }
-
-
 
     
 /* ========================================================== */
@@ -715,106 +712,6 @@
         cursor: pointer;
     }
 
-    /* ============== ESTILOS PARA O MODO ESCURO (DARK MODE) ============== */
-    body.dark-mode {
-        --primary-color: #388bff;
-        --primary-light: rgba(56, 139, 255, 0.15);
-        --secondary-color: #8c9bab;
-        
-        --bg-color: #111111;
-        --card-bg-color: #212b36;
-        --text-color: #f0f2f5;
-        --border-color: #394451;
-        --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.3);
-    }
-
-    
-    body.dark-mode .login-page-container {
-        --card-bg-color: #ffffff;
-        --text-color: #172B4D;
-        --secondary-color: #5E6C84;
-        --border-color: #dfe1e6;
-    }
-    body.dark-mode .login-page-container input {
-        background-color: #ffffff;
-        color: #172B4D;
-        border-color: #dfe1e6;
-    }
-    
-    /* Localização da regra para o modo escuro */
-body.dark-mode thead th {
-    background-color: #2c3846; /* <-- ESTA É A COR DO CABEÇALHO NO MODO ESCURO */
-}
-
-
-    body.dark-mode tbody tr:hover {
-        background-color: #2c3846;
-    }
-    
-    body.dark-mode input, body.dark-mode select {
-        background-color: #2c3846;
-        color: var(--text-color);
-        border-color: #2c3846;
-    }
-    
-    body.dark-mode input[readonly] {
-        background-color: #394451;
-    }
-
-    body.dark-mode #login-error, body.dark-mode #produto-error-msg, body.dark-mode #loja-error-msg { background-color: rgba(220, 53, 69, 0.2); }
-    body.dark-mode #loja-success-msg { background-color: rgba(0, 135, 90, 0.2); }
-    body.dark-mode .main-header nav ul { background-color: var(--bg-color); }
-    body.dark-mode form.editing-mode input, body.dark-mode form.editing-mode select {
-        background-color: rgba(56, 139, 255, 0.2) !important;
-    }
-
-    body.dark-mode .main-header h2 {
-        color: white;
-    }
-
-body.dark-mode .login-page-container {
-        --card-bg-color: #ffffff; /* Fundo sempre branco */
-        --text-color: #172B4D;    /* Cor do texto sempre escura */
-        --secondary-color: #172B4D; /* Cor secundária sempre escura */
-        --border-color: #dfe1e6;   /* Cor da borda sempre clara */
-    }
-    
-    /* Garante que os inputs também não sejam afetados pelo modo escuro */
-    body.dark-mode .login-page-container input {
-        background-color: #ffffff;
-        color: #172B4D;
-        border-color: #dfe1e6;
-    }
-
-    body.dark-mode .radio-group { border-color: #4a596a; }
-    body.dark-mode .radio-group label { color: #8c9bab; }
-    body.dark-mode .radio-group input[type="radio"]:checked + label { background-color: var(--primary-color); color: white; }
-
-    /* ============== ESTILOS PARA O BOTÃO DE TEMA ============== */
-    #theme-toggle-btn {
-        background: none;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        color: var(--secondary-color);
-        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    }
-    
-    #theme-toggle-btn:hover {
-        background-color: var(--primary-light);
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-    }
-    
-    #theme-toggle-btn svg {
-        pointer-events: none;
-    }
-
     /* ================================================================== */
 /* BLOCO ÚNICO: CORREÇÃO NO CSS (Alinhamento do Status)             */
 /* ================================================================== */
@@ -900,13 +797,7 @@ body.dark-mode .login-page-container {
         background-color: var(--primary-color);
         color: white;
     }
-    body.dark-mode .toggle-btn {
-        color: var(--text-color);
-    }
-    body.dark-mode .toggle-btn.active {
-        background-color: var(--primary-color);
-        color: #fff;
-    }
+
 /* ========================================================== */
 /*      ABORDAGEM FINAL PARA SCROLL COM TÍTULO FIXO (v3.1)    */
 /* ========================================================== */
@@ -927,7 +818,6 @@ body.dark-mode .login-page-container {
     width: 100% !important;
     height: auto !important; /* A altura será definida pelo JS */
 }
-
 
     /* ================================================================== */
     /* NOVOS ESTILOS PARA A LINHA MENSAL/ANUAL */
@@ -1012,10 +902,6 @@ body.dark-mode .login-page-container {
         background-color: var(--card-bg-color); /* Fundo sólido para modo claro */
         z-index: 1; /* Coloca a coluna acima dos dados, mas abaixo do cabeçalho fixo */
         min-width: 150px;
-    }
-
-    body.dark-mode #tabela-detalhe-vendas .row-header-dia {
-        background-color: #2c3846; /* Fundo sólido para modo escuro */
     }
 
     #tabela-detalhe-vendas .inauguracao-cell {
@@ -1137,31 +1023,6 @@ tr:hover .btn-edit-comissao {
     justify-content: space-between;
 }
 
-/* 2. Estiliza o botão para o padrão do sistema (desktop ) */
-#refresh-dashboard-btn {
-    background-color: var(--primary-color); /* Cor azul primária */
-    border: none;
-    color: #ffffff; /* Cor do ícone branca */
-    border-radius: 8px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* 3. Efeito hover para desktop */
-#refresh-dashboard-btn:hover {
-    background-color: #0041a3; /* Tom de azul mais escuro */
-    transform: rotate(90deg); /* Efeito de rotação */
-}
-
-#refresh-dashboard-btn svg {
-    pointer-events: none;
-}
-
 /* ========================================================== */
 /*       INÍCIO DA AÇÃO: CORRIGIR QUEBRA DE LINHA NA TABELA     */
 /* ========================================================== */
@@ -1178,7 +1039,6 @@ tr:hover .btn-edit-comissao {
 #tabela-analise-comissao td:nth-child(2) {
     min-width: 200px; /* Ajuste este valor conforme necessário */
 }
-
 
 /* ========================================================== */
 /*                        FIM DA AÇÃO                         */
@@ -1210,9 +1070,6 @@ tr:hover .btn-edit-comissao {
 /*                        FIM DA AÇÃO                         */
 /* ========================================================== */
 
-
-
-
 /* ========================================================== */
 /*       INÍCIO DA AÇÃO: CORRIGIR QUEBRA DE LINHA NA TABELA DE LOJAS     */
 /* ========================================================== */
@@ -1235,17 +1092,9 @@ tr:hover .btn-edit-comissao {
 /*                        FIM DA AÇÃO                         */
 /* ========================================================== */
 
-
 /* ========================================================== */
 /*     CONTROLE DE VISIBILIDADE (DESKTOP vs MOBILE)           */
 /* ========================================================== */
-
-/* 4. Esconde o botão por padrão em telas pequenas (mobile-first) */
-@media (max-width: 768px) {
-    #refresh-dashboard-btn {
-        display: none;
-    }
-}
 
     
 /* ================================================================== */
@@ -1420,7 +1269,6 @@ tr:hover .btn-edit-comissao {
         grid-column: 1 / -1; /* Força cada campo a ocupar a linha inteira */
     }
 
-
     /* --- 6. AJUSTES NAS TABELAS --- */
 
     .table-container {
@@ -1435,7 +1283,6 @@ tr:hover .btn-edit-comissao {
     #tabela-detalhe-vendas th, 
     #tabela-detalhe-vendas td { min-width: 60px; }
     #tabela-detalhe-vendas .row-header-dia { min-width: 120px; }
-
 
     .login-screen-wrapper {
         display: block;            /* Comportamento de bloco padrão, ESSENCIAL para o scroll */
@@ -1544,6 +1391,8 @@ tr:hover .btn-edit-comissao {
 /*                         FIM DA AÇÃO 1                        */
 /* ========================================================== */
 
+
+
 </style>
 </head>
 <body>
@@ -1607,13 +1456,9 @@ tr:hover .btn-edit-comissao {
                         <li><a href="#lojas" class="nav-tab" data-tab="lojas">Lojas</a></li>
                         <li><a href="#produtos" class="nav-tab" data-tab="produtos">Produtos</a></li>
                         <li><a href="#comissao" class="nav-tab" data-tab="comissao">Comissão</a></li>
-                        <li><a href="#estoque" class="nav-tab" data-tab="estoque">Estoque</a></li>
                     </ul>
                 </nav>
 
-                <button id="theme-toggle-btn" title="Alternar tema">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.7.79z"></path></svg>
-                </button>
                 <button id="logout-btn">Sair</button>
             </div>
         </header>
@@ -1649,15 +1494,17 @@ tr:hover .btn-edit-comissao {
         <select id="filter-loja">
             <!-- Opções serão populadas pelo JavaScript -->
         </select>
+        
+        <!-- Novo filtro de Venda -->
+        <label for="filter-venda">Venda:</label>
+        <select id="filter-venda">
+            <option value="">Todos</option>
+            <option value="CASA+">CASA+</option>
+            <option value="Store in Store">Store in Store</option>
+        </select>
     </div>
     <!-- FIM DO BLOCO A SER SUBSTITUÍDO -->
 
-    <button id="refresh-dashboard-btn" title="Recarregar Dados">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="23 4 23 10 17 10"></polyline>
-            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-        </svg>
-    </button>
 </div>
 
 <!-- ========================================================== -->
@@ -1669,7 +1516,6 @@ tr:hover .btn-edit-comissao {
                     <div class="card"><h3 id="card-unidades-label">Unidades</h3><p id="card-unidades">0</p></div>
                     <div class="card"><h3 id="card-ticket-medio-label">Ticket Médio</h3><p id="card-ticket-medio">R$ 0,00</p></div>
                     <div class="card"><h3 id="card-venda-media-label">Venda Média/Dia</h3><p id="card-venda-media">R$ 0,00</p></div>
-                    <div class="card"><h3 id="card-estoque-total-label">Estoque Total</h3><p id="card-estoque-total">0</p></div>
                 </div>
                 
 <div class="charts-container-3-cols">
@@ -1699,9 +1545,6 @@ tr:hover .btn-edit-comissao {
     </div>
 </div>
 
-
-
-
                 <div class="charts-container-3-cols">
                     <div class="chart-wrapper chart-wrapper-tall"><div class="chart-title">Unidades Vendidas por Tipo de Loja</div><canvas id="venda-tipo-loja-chart"></canvas></div>
                     <div class="chart-wrapper chart-wrapper-tall"><div class="chart-title">Unidades Vendidas por GRC</div><canvas id="ranking-grc-chart"></canvas></div>
@@ -1709,26 +1552,7 @@ tr:hover .btn-edit-comissao {
                 </div>
 
                 <!-- ADICIONE A NOVA FILEIRA DE GRÁFICOS DE ESTOQUE AQUI -->
-<div class="charts-container-3-cols">
-    <!-- Gráfico de Estoque por Loja -->
-    <div class="chart-wrapper chart-wrapper-scrollable">
-        <div class="chart-title">Estoque Total por Loja</div>
-        <div class="chart-scroll-area">
-            <div id="estoque-loja-canvas-container"><canvas id="estoque-por-loja-chart"></canvas></div>
-        </div>
-    </div>
-
-    <!-- Gráfico de Estoque por Modelo -->
-    <div class="chart-wrapper chart-wrapper-scrollable">
-        <div class="chart-title">Estoque Total por Modelo</div>
-        <div class="chart-scroll-area">
-            <div id="estoque-modelo-canvas-container"><canvas id="estoque-por-modelo-chart"></canvas></div>
-        </div>
-    </div>
-</div>
-<!-- FIM DA NOVA FILEIRA -->
-<!-- ========================================================== -->
-<!-- ========================================================== -->
+<!-- Gráficos de Estoque removidos (dados mantidos no Firebase) -->
 <!--           CORREÇÃO FINAL: ISOLAMENTO COM ID                -->
 <!-- ========================================================== -->
 <!-- GRÁFICOS TEMPORAIS UNIFICADOS -->
@@ -1756,10 +1580,6 @@ tr:hover .btn-edit-comissao {
 <!-- ========================================================== -->
 <!--                        FIM DA CORREÇÃO                       -->
 <!-- ========================================================== -->
-
-
-
-
 
                                 <!-- GRÁFICOS MENSAL E ANUAL NA MESMA LINHA -->
                 <div class="charts-row">
@@ -1812,9 +1632,6 @@ tr:hover .btn-edit-comissao {
                             <tbody id="detalhe-vendas-body"></tbody>
                         </table>
                     </div>
-
-
-
 
             </section>
 
@@ -1881,7 +1698,6 @@ tr:hover .btn-edit-comissao {
                     <button id="clear-vendas-filters-btn" class="btn-cancel">Limpar Filtros</button>
                 </div>
 
-
                 <div class="table-wrapper">
                     <div class="table-container">
                         <table id="tabela-vendas">
@@ -1933,7 +1749,6 @@ tr:hover .btn-edit-comissao {
                     <!-- ========================================================== -->
                 </select>
             </div>
-
 
                     <div class="form-group"><label for="loja-data-inauguracao">Data de Inauguração</label><input type="date" id="loja-data-inauguracao" required></div>
                     <div class="form-group">
@@ -1998,7 +1813,6 @@ tr:hover .btn-edit-comissao {
                         <button type="button" id="produto-submit-btn" class="btn-submit-action">Cadastrar</button>
                         <button type="button" id="cancel-produto-form-btn" class="btn-cancel">Limpar</button>
                     </div>
-
 
                 </form>
 
@@ -2106,7 +1920,6 @@ thead>
 <!-- ========================================================== -->
 <!--                        FIM DA AÇÃO 1                         -->
 <!-- ========================================================== -->
-
 
     <!-- 1. Tabela de Análise de Comissões -->
     <div id="comissao-analise-view">
@@ -2277,112 +2090,6 @@ thead>
 <!-- No seu HTML, dentro de <main> -->
 <!-- ... (sua section id="comissao" existente) ... -->
 
-<!-- ========================================================== -->
-<!--           INÍCIO DA AÇÃO 1.2: ADICIONAR SEÇÃO ESTOQUE        -->
-<!-- ========================================================== -->
-<section id="estoque" class="tab-content">
-    <div class="table-wrapper" style="padding: 30px; margin-bottom: 25px;">
-        <form id="form-entrada-estoque" class="form-grid-2-cols">
-            <h2 style="margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">Registrar Entrada de Estoque</h2>
-            <div id="estoque-feedback-msg" class="hidden" style="grid-column: 1 / -1; margin-bottom: 0; padding: 10px; border-radius: 8px;"></div>
-
-            <div class="form-group">
-                <label for="estoque-data-entrada">Data da Entrada</label>
-                <input type="date" id="estoque-data-entrada" required>
-            </div>
-            <div class="form-group">
-                <label for="estoque-loja">Loja</label>
-                <select id="estoque-loja" required></select>
-            </div>
-            <div class="form-group">
-                <label for="estoque-produto">Produto</label>
-                <select id="estoque-produto" required></select>
-            </div>
-            <div class="form-group">
-                <label for="estoque-quantidade">Quantidade</label>
-                <input type="number" id="estoque-quantidade" min="1" value="1" required>
-            </div>
-            <div class="form-group" style="grid-column: 1 / -1;">
-                <label for="estoque-observacao">Observação (Opcional)</label>
-                <input type="text" id="estoque-observacao">
-            </div>
-            
-            <div class="form-actions" style="justify-content: flex-end; margin-top: auto;">
-                <button type="submit">Registrar Entrada</button>
-            </div>
-        </form>
-    </div>
-
-    <hr>
-
-    <!-- Futuramente, aqui virá a tabela de movimentações de estoque -->
-    <div class="table-wrapper" style="padding: 30px; margin-bottom: 25px;">
-        <h2 style="margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">Últimas Movimentações de Estoque</h2>
-        <div class="table-container" style="max-height: 500px;">
-            <table id="tabela-movimentacoes-estoque">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Loja</th>
-                        <th>Produto</th>
-                        <th>Tipo</th>
-                        <th>Qtd</th>
-                        <th>Observação</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-movimentacoes-estoque-body">
-                    <!-- Conteúdo gerado pelo JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-<!-- ========================================================== -->
-<!--           INÍCIO DA AÇÃO 1: ADICIONAR FORMULÁRIO DE INVENTÁRIO        -->
-<!-- ========================================================== -->
-
-<hr>
-
-<div class="table-wrapper" style="padding: 30px; margin-bottom: 25px;">
-    <form id="form-inventario" class="form-grid-2-cols">
-        <h2 style="margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">Ajuste de Inventário (Contagem Física)</h2>
-        <div id="inventario-feedback-msg" class="hidden" style="grid-column: 1 / -1; margin-bottom: 0; padding: 10px; border-radius: 8px;"></div>
-
-        <div class="form-group">
-            <label for="inventario-data">Data do Ajuste</label>
-            <input type="date" id="inventario-data" required>
-        </div>
-        <div class="form-group">
-            <label for="inventario-loja">Loja</label>
-            <select id="inventario-loja" required></select>
-        </div>
-        <div class="form-group">
-            <label for="inventario-produto">Produto</label>
-            <select id="inventario-produto" required></select>
-        </div>
-        <div class="form-group">
-            <label for="inventario-quantidade-fisica">Quantidade Contada (Físico)</label>
-            <input type="number" id="inventario-quantidade-fisica" min="0" required>
-        </div>
-        <div class="form-group" style="grid-column: 1 / -1;">
-            <label for="inventario-observacao">Motivo do Ajuste (Obrigatório)</label>
-            <input type="text" id="inventario-observacao" required placeholder="Ex: Acerto de inventário, perda, avaria...">
-        </div>
-        
-        <div class="form-actions" style="justify-content: flex-end; margin-top: auto;">
-            <button type="submit">Registrar Ajuste</button>
-        </div>
-    </form>
-</div>
-
-<!-- ========================================================== -->
-<!--                        FIM DA AÇÃO 1                       -->
-<!-- ========================================================== -->
-
-</section>
-<!-- ========================================================== -->
-<!--                        FIM DA AÇÃO 1.2                       -->
-<!-- ========================================================== -->
-
 
         </main>
     </div>
@@ -2399,8 +2106,6 @@ thead>
     </div>
 
 <script>
-// ======================= LÓGICA DA APLICAÇÃO (JAVASCRIPT) =======================
-// --- INÍCIO DA CONFIGURAÇÃO DO FIREBASE ---
 
 // Cole aqui o objeto firebaseConfig que você copiou do console do Firebase
 const firebaseConfig = {
@@ -2414,10 +2119,10 @@ const firebaseConfig = {
 
 // Inicializa a aplicação do Firebase com as suas chaves
 firebase.initializeApp(firebaseConfig);
-// Pega uma referência ao serviço do banco de dados (Firestore)
 const db = firebase.firestore();
 const auth = firebase.auth();
-// --- FIM DA CONFIGURAÇÃO DO FIREBASE ---
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -2434,7 +2139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const loginError = document.getElementById('login-error');
     const logoutButton = document.getElementById('logout-btn');
-    const themeToggleButton = document.getElementById('theme-toggle-btn');
+
 
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -2477,24 +2182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalMessage = document.getElementById('modal-message');
     const modalConfirmBtn = document.getElementById('modal-confirm-btn');
-    const modalCancelBtn = document.getElementById('modal-cancel-btn');
-
-    // ==========================================================
-    //           INÍCIO DA AÇÃO 2.1: NOVAS CONSTANTES DOM
-    // ==========================================================
-    // Elementos da Seção Estoque
-    const formEntradaEstoque = document.getElementById('form-entrada-estoque');
-    const estoqueDataEntrada = document.getElementById('estoque-data-entrada');
-    const estoqueLojaSelect = document.getElementById('estoque-loja');
-    const estoqueProdutoSelect = document.getElementById('estoque-produto');
-    const estoqueQuantidadeInput = document.getElementById('estoque-quantidade');
-    const estoqueObservacaoInput = document.getElementById('estoque-observacao');
-    const estoqueFeedbackMsg = document.getElementById('estoque-feedback-msg');
-    const tabelaMovimentacoesEstoqueBody = document.getElementById('tabela-movimentacoes-estoque-body');
-    // ==========================================================
-    //                        FIM DA AÇÃO 2.1                       
-    // ==========================================================
-    // Elementos de Filtros
+    const modalCancelBtn = document.getElementById('modal-cancel-btn');    // Elementos de Filtros
     const filterMonth = document.getElementById('filter-month');
     const filterYear = document.getElementById('filter-year');
     const exportVendasBtn = document.getElementById('export-vendas-btn');
@@ -2502,10 +2190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const vendasFilterLoja = document.getElementById('vendas-filter-loja');
     const clearVendasFiltersBtn = document.getElementById('clear-vendas-filters-btn');
 
-    const refreshDashboardBtn = document.getElementById('refresh-dashboard-btn');
-
-
-        // No início do seu DOMContentLoaded, junto com as outras constantes
+    // No início do seu DOMContentLoaded, junto com as outras constantes
     const formNovaRegraComissao = document.getElementById('form-nova-regra-comissao');
     const escopoComissaoSelect = document.getElementById('regra-comissao-escopo');
     const tipoLojaComissaoContainer = document.getElementById('container-regra-comissao-tipo-loja');
@@ -2525,15 +2210,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const inventarioObservacaoInput = document.getElementById('inventario-observacao');
     const inventarioFeedbackMsg = document.getElementById('inventario-feedback-msg');
 
-
-    // Adiciona uma verificação para o caso do elemento não existir
-    if (refreshDashboardBtn) {
-        // 2. Adiciona o evento de clique
-        refreshDashboardBtn.addEventListener('click', () => {
-            // 3. Recarrega a página inteira, simulando um F5
-            location.reload();
-        });
-    }
     // --- BANCO DE DADOS (localStorage) e ESTADO DA SESSÃO ---
     let lojas = [];
     let vendas = [];
@@ -2542,13 +2218,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let historicoAluguel = [];  // <-- MUDANÇA: Nome atualizado
     let charts = {};
     let lojasSelecionadasIds = []; // <<<< ADICIONE ESTA LINHA
-    let movimentacoesEstoque = [];
 
-    // --- LÓGICA DE TEMA (MODO ESCURO) ---
-    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-
-   
+    
     // ADICIONE ESTAS CONSTANTES
     const detalheVendasHead = document.getElementById('detalhe-vendas-head');
     const detalheVendasBody = document.getElementById('detalhe-vendas-body');
@@ -2558,23 +2229,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const detalheLojaFilter = document.getElementById('detalhe-loja-filter');
 
 async function loadDataFromFirebase() {
-    console.log("Iniciando carregamento de dados do Firebase...");
-    
     try {
         const [
             lojasSnapshot, 
             vendasSnapshot, 
             produtosSnapshot, 
             historicoComissaoSnapshot,
-            historicoAluguelSnapshot,
-            movimentacoesEstoqueSnapshot
+            historicoAluguelSnapshot
         ] = await Promise.all([
             db.collection('lojas').get(),
             db.collection('vendas').get(),
             db.collection('produtos').get(),
             db.collection('historicoComissao').get(),
-            db.collection('historicoAluguel').get(),
-            db.collection('movimentacoesEstoque').get()
+            db.collection('historicoAluguel').get()
         ]);
 
         // Processa os resultados e preenche os arrays locais
@@ -2591,31 +2258,16 @@ async function loadDataFromFirebase() {
             data.dataInicioVigencia = data.dataInicioVigencia.toDate();
             return { id: doc.id, ...data };
         });
-        movimentacoesEstoque = movimentacoesEstoqueSnapshot.docs.map(doc => {
-            const data = doc.data();
-            if (data.data && typeof data.data.toDate === 'function') {
-                data.data = data.data.toDate();
-            }
-            return { id: doc.id, ...data };
-        });
+        // movimentacoesEstoque é mantido no Firebase mas não carregado na interface
 
-        console.log("Dados carregados com sucesso:", { lojas, vendas, produtos, historicoComissao, historicoAluguel, movimentacoesEstoque });
-
-        // Chama a renderização da aplicação APENAS após carregar tudo
-        renderAll();
-
-        // ADICIONE A CHAMADA AQUI, DEPOIS DE renderAll()
-        runDashboardUpdate(); 
+        // Renderiza APENAS o Dashboard (lazy loading para outras abas)
+        renderAll(); 
 
     } catch (error) {
         console.error("ERRO FATAL AO CARREGAR DADOS DO FIREBASE:", error);
         alert("Não foi possível carregar os dados da aplicação. Verifique o console (F12) para mais detalhes e recarregue a página.");
     }
 }
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: CRIAR FUNÇÃO PARA POPULAR SUGESTÕES
-// ==========================================================
 
 function populateGRCSugestoes() {
     const datalist = document.getElementById('grc-sugestoes');
@@ -2634,41 +2286,26 @@ function populateGRCSugestoes() {
     });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO 2
-// ==========================================================
+// ========== FUNÇÕES GLOBAIS DE POPULATE ==========
+window.populateLojasSelect = function() {
+    const vendaLojaSelect = document.getElementById('venda-loja');
+    if (!vendaLojaSelect) return;
+    vendaLojaSelect.innerHTML = '<option value="">Selecione a loja</option>';
+    lojas.forEach(loja => {
+        vendaLojaSelect.innerHTML += `<option value="${loja.id}">${loja.nome}</option>`;
+    });
+};
 
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 1): CRIAR FUNÇÃO DE FILTRO DE ESTOQUE
-// ==========================================================
-
-function getFilteredMovimentacoes() {
-    const userLojaId = localStorage.getItem('userLojaId');
-    
-    // 1. Aplica o filtro de segurança primeiro
-    let movimentacoesFiltradas = movimentacoesEstoque;
-    if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
-        movimentacoesFiltradas = movimentacoesEstoque.filter(mov => mov.lojaId === userLojaId);
-    } else {
-        // 2. Se for admin, aplica o filtro do seletor do dashboard
-        const selectedLoja = document.getElementById('filter-loja').value;
-        if (selectedLoja !== 'all') {
-            movimentacoesFiltradas = movimentacoesEstoque.filter(mov => mov.lojaId === selectedLoja);
-        }
-    }
-    
-    return movimentacoesFiltradas;
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 1)
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: POPULAR O FILTRO DE LOJA
-// ==========================================================
-
-
+window.populateProdutosSelect = function() {
+    const vendaModeloSelect = document.getElementById('venda-modelo');
+    if (!vendaModeloSelect) return;
+    const produtosAtivos = produtos.filter(p => p.ativo);
+    vendaModeloSelect.innerHTML = '<option value="">Selecione o modelo</option>';
+    produtosAtivos.forEach(produto => {
+        vendaModeloSelect.innerHTML += `<option value="${produto.modelo}">${produto.modelo}</option>`;
+    });
+};
+// ===================================================
 function populateDashboardLojaFilter() {
     const filterLoja = document.getElementById('filter-loja');
     if (!filterLoja) return;
@@ -2685,111 +2322,19 @@ function populateDashboardLojaFilter() {
     // A configuração do evento será feita em um lugar mais seguro (na função initializeApp).
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-
-    function applyTheme(theme  ) {
-        if (theme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeToggleButton.innerHTML = sunIcon;
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.body.classList.remove('dark-mode');
-            themeToggleButton.innerHTML = moonIcon;
-            localStorage.setItem('theme', 'light');
-        }
-        if (Object.keys(charts).length > 0) {
-            updateDashboard();
-        }
-    }
-
-    themeToggleButton.addEventListener('click', () => {
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        applyTheme(currentTheme === 'light' ? 'dark' : 'light');
-    });
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: ATUALIZAR A FUNÇÃO checkLogin
-// ==========================================================
-
-function checkLogin() {
-    applyTheme(localStorage.getItem('theme'));
-
-    auth.onAuthStateChanged(async (user) => {
-        if (user) {
-            // O usuário ESTÁ logado.
-            console.log('Sessão ativa para:', user.email);
-
-            try {
-                // 1. BUSCA AS PERMISSÕES DO USUÁRIO NA COLEÇÃO 'usuarios'
-                const userDocRef = db.collection('usuarios').doc(user.email.toLowerCase());
-                const userDoc = await userDocRef.get();
-
-                if (userDoc.exists) {
-                    const userData = userDoc.data();
-                    // 2. SALVA O ID DA LOJA E O NOME DO USUÁRIO NO localStorage
-                    localStorage.setItem('userLojaId', userData.lojaId || 'admin'); // Salva o ID ou 'admin'
-                    localStorage.setItem('userName', userData.nomeUsuario || 'Admin');
-                    console.log(`Permissões carregadas: Loja ID = ${userData.lojaId}`);
-                } else {
-                    // Se o usuário não está na coleção 'usuarios', ele não tem permissão
-                    console.warn(`Usuário ${user.email} não encontrado na lista de permissões.`);
-                    localStorage.setItem('userLojaId', 'none'); // 'none' para usuário sem permissão
-                    localStorage.setItem('userName', 'Desconhecido');
-                }
-
-                // 3. VERIFICA SE O USUÁRIO É ADMIN (da coleção antiga, para a aba comissão)
-                const adminDoc = await db.collection('admins').doc('user_list').get();
-                const adminEmails = adminDoc.exists ? adminDoc.data().emails : [];
-                const isUserAdmin = adminEmails.includes(user.email);
-                localStorage.setItem('isUserAdmin', isUserAdmin);
-
-                // 4. Mostra a aplicação principal
-                showApp();
-
-            } catch (error) {
-                console.error("Erro ao verificar permissões:", error);
-                // Em caso de erro, define como sem permissão e continua
-                localStorage.setItem('userLojaId', 'none');
-                localStorage.setItem('isUserAdmin', 'false');
-                showApp();
-            }
-
-        } else {
-            // O usuário NÃO ESTÁ logado.
-            console.log('Nenhum usuário logado.');
-            localStorage.removeItem('userLojaId');
-            localStorage.removeItem('userName');
-            localStorage.removeItem('isUserAdmin');
-            showLogin();
-        }
-    });
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO 2
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 1): RESTAURAR applySecurityRules
-// ==========================================================
-
 function applySecurityRules() {
     const userLojaId = localStorage.getItem('userLojaId');
     const isUserStore = userLojaId && userLojaId !== 'admin' && userLojaId !== 'none';
 
     // --- LÓGICA PARA OS FORMULÁRIOS ---
-    const formSelectIds = ['venda-loja', 'estoque-loja', 'inventario-loja'];
+    const formSelectIds = ['venda-loja', 'inventario-loja'];
     formSelectIds.forEach(id => {
         const select = document.getElementById(id);
         if (select) {
+
             if (isUserStore) {
                 select.value = userLojaId;
                 select.disabled = true;
-                // Dispara o evento 'change' para acionar lógicas dependentes
-                // como o preenchimento do "Tipo da Loja".
                 if (id === 'venda-loja') {
                     select.dispatchEvent(new Event('change'));
                 }
@@ -2818,13 +2363,25 @@ function applySecurityRules() {
         }
     }
 }
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 1)
-// ==========================================================
 
-// ==========================================================
-//            INÍCIO DA ALTERAÇÃO (FUNÇÃO DE LOGIN)
-// ==========================================================
+// Verifica o estado de autenticação quando a página carrega
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        // Usuário está logado - mostra o app
+        loginScreen.classList.add('hidden');
+        appScreen.classList.remove('hidden');
+        // Carrega os dados apenas se ainda não foram carregados
+        if (vendas.length === 0) {
+            initializeApp();
+            loadDataFromFirebase();
+        }
+    } else {
+        // Usuário não está logado - mostra o login
+        loginScreen.classList.remove('hidden');
+        appScreen.classList.add('hidden');
+    }
+});
+
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('username').value; // Agora é um e-mail
@@ -2835,8 +2392,11 @@ loginForm.addEventListener('submit', (e) => {
         .then((userCredential) => {
             // Login bem-sucedido!
             // Não precisamos mais do sessionStorage, o Firebase cuida disso.
-            console.log('Login bem-sucedido:', userCredential.user);
-            showApp(); // Mostra a tela principal da aplicação
+            // Mostrar app e inicializar
+            loginScreen.classList.add('hidden');
+            appScreen.classList.remove('hidden');
+            initializeApp();
+            loadDataFromFirebase();
         })
         .catch((error) => {
             // Ocorreu um erro
@@ -2845,52 +2405,105 @@ loginForm.addEventListener('submit', (e) => {
             loginError.classList.remove('hidden');
         });
 });
-// ==========================================================
-//                       FIM DA ALTERAÇÃO
-// ==========================================================
 
-
-// ==========================================================
-//           INÍCIO DA ALTERAÇÃO (FUNÇÃO DE LOGOUT)
-// ==========================================================
 logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => {
         // Logout bem-sucedido.
-        console.log('Usuário deslogado.');
         // Não precisa chamar showLogin(), o onAuthStateChanged fará isso.
-        location.reload(); // A forma mais simples de resetar o estado da aplicação
+        // O onAuthStateChanged vai redirecionar para login automaticamente
     }).catch((error) => {
         console.error('Erro ao fazer logout:', error);
     });
 });
-// ==========================================================
-//                       FIM DA ALTERAÇÃO
-// ==========================================================
-
-
-    function showLogin() {
-        appScreen.classList.add('hidden');
-        loginScreen.classList.remove('hidden');
-        applyTheme(localStorage.getItem('theme'));
-    }
-
-    function showApp() {
-    loginScreen.classList.add('hidden');
-    appScreen.classList.remove('hidden');
-    
-    // Primeiro, configura os elementos da página (navegação, formulários, etc.)
-    initializeApp(); 
-    
-    // Em seguida, chama a função para carregar os dados do banco de dados online.
-    // A função renderAll() será chamada de dentro da loadDataFromFirebase quando os dados chegarem.
-    loadDataFromFirebase();
-}
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO initializeApp COMPLETA
-// ==========================================================
 
 function initializeApp() {
+    //        SISTEMA DE LAZY LOADING DE ABAS
+
+    // Mapa de dependências de cada aba
+    const tabDependencies = {
+        dashboard: {
+            renders: ['renderTabelaLojas', 'renderProdutosLista', 'renderTabelaVendas'],
+            populates: ['populateLojasFilter', 'populateDashboardLojaFilter'],
+            setup: ['setupComissaoEditing']
+        },
+        vendas: {
+            renders: ['renderTabelaVendas'],
+            populates: ['populateLojasSelect', 'populateProdutosSelect', 'populateVendasFilters'],
+            setup: []
+        },
+        lojas: {
+            renders: ['renderTabelaLojas'],
+            populates: ['populateLojasSelect', 'populateGRCSugestoes'],
+            setup: []
+        },
+        produtos: {
+            renders: ['renderProdutosLista'],
+            populates: ['populateProdutosSelect'],
+            setup: ['setupProdutosInteractivity']
+        },
+        comissao: {
+            renders: ['renderTabelaAnaliseComissao', 'renderTabelaResumoComissao', 'renderTabelaHistoricoComissao'],
+            populates: ['populateComissaoLojaSelect', 'populateAluguelLojaSelect'],
+            setup: ['setupComissaoEditing']
+        }
+        // estoque removido - dados mantidos no Firebase para uso futuro
+    };
+
+    // Rastreador de abas já carregadas
+    const loadedTabs = new Set(['dashboard']); // Dashboard já é carregado por padrão
+
+    // Função para carregar uma aba sob demanda
+    window.loadTabOnDemand = function(tabName) {
+        // Se a aba já foi carregada, não recarrega
+        if (loadedTabs.has(tabName)) {
+            return;
+        }
+
+        const deps = tabDependencies[tabName];
+        if (!deps) {
+            console.warn(`Nenhuma dependência definida para a aba '${tabName}'`);
+            return;
+        }
+
+        // Executa as funções de renderização
+        if (deps.renders && deps.renders.length > 0) {
+            deps.renders.forEach(funcName => {
+                if (typeof window[funcName] === 'function') {
+                    window[funcName]();
+                }
+            });
+        }
+
+        // Executa as funções de população
+        if (deps.populates && deps.populates.length > 0) {
+            deps.populates.forEach(funcName => {
+                if (typeof window[funcName] === 'function') {
+                    window[funcName]();
+                }
+            });
+        }
+
+        // Executa as funções de setup
+        if (deps.setup && deps.setup.length > 0) {
+            deps.setup.forEach(funcName => {
+                if (typeof window[funcName] === 'function') {
+                    window[funcName]();
+                }
+            });
+        }
+
+        // Marca a aba como carregada
+        loadedTabs.add(tabName);
+    };
+
+    // Função para recarregar uma aba específica
+    window.reloadTab = function(tabName) {
+        loadedTabs.delete(tabName);
+        window.loadTabOnDemand(tabName);
+    };
+
+    // Função para recarregar TODOS os dados
+
     // A lógica de produtos iniciais permanece a mesma
     const produtosIniciais = [
         { id: 1, modelo: 'Harlley 16', valor: 0, ativo: true, ultimaAlteracao: null },
@@ -2919,14 +2532,13 @@ function initializeApp() {
     populateFilters();
     populateComissaoFilters(); 
 
-    // --- INÍCIO DA NOVA LÓGICA DE SINCRONIZAÇÃO ---
-
     // 3. Pega a referência de todos os campos de data
     const dashboardStartDate = document.getElementById('filter-start-date');
     const dashboardEndDate = document.getElementById('filter-end-date');
     const comissaoStartDate = document.getElementById('comissao-filter-start-date');
     const comissaoEndDate = document.getElementById('comissao-filter-end-date');
     const filterLojaDashboard = document.getElementById('filter-loja');
+    const filterVendaSelect = document.getElementById('filter-venda');
 
     // Define as datas padrão para os novos calendários
     const hoje = new Date();
@@ -2953,8 +2565,9 @@ function initializeApp() {
     
     // O filtro de loja do dashboard continua com seu próprio evento
     if (filterLojaDashboard) filterLojaDashboard.onchange = runDashboardUpdate;
-
-    // --- FIM DA NOVA LÓGICA DE SINCRONIZAÇÃO ---
+    
+    // Adiciona event listener para o novo filtro de venda
+    if (filterVendaSelect) filterVendaSelect.onchange = runDashboardUpdate;
 
     // 6. Configuração dos botões de toggle Dia/Semana (inalterado)
     toggleDiaBtn.addEventListener('click', () => {
@@ -2973,14 +2586,6 @@ function initializeApp() {
         temporalChartTitle.textContent = 'Venda por Semana';
     });
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 3: LÓGICA DE EDIÇÃO DA COMISSÃO
-// ==========================================================
 
 function setupComissaoEditing() {
     const tabelaAnaliseBody = document.getElementById('tabela-analise-comissao-body');
@@ -3028,7 +2633,6 @@ function setupComissaoEditing() {
                 renderTabelaAnaliseComissao(); // Restaura a tabela para o estado original
                 return;
             }
-            // --- FIM DA NOVA LÓGICA ---
             // 3. Recalcula e prepara os dados para salvar
             const novoPercentualDecimal = novoPercentual / 100;
             const valorTotalVenda = (venda.valor || 0) * (venda.quantidade || 0);
@@ -3041,8 +2645,16 @@ function setupComissaoEditing() {
                     valorComissaoCalculado: novoValorComissao
                 });
 
-                // 5. Recarrega os dados para garantir que tudo esteja sincronizado
-                await loadDataFromFirebase();
+                // 5. OTIMIZAÇÃO: Atualiza apenas o objeto local (não recarrega tudo)
+                // Encontra a venda no array local e atualiza seus valores
+                const vendaLocal = vendas.find(v => v.id === vendaId);
+                if (vendaLocal) {
+                    vendaLocal.percentualComissaoCalculado = novoPercentualDecimal;
+                    vendaLocal.valorComissaoCalculado = novoValorComissao;
+                }
+                
+                // Renderiza APENAS a tabela de comissão (não recarrega tudo)
+                renderTabelaAnaliseComissao();
                 
             } catch (error) {
                 console.error("Erro ao atualizar comissão:", error);
@@ -3062,15 +2674,6 @@ function setupComissaoEditing() {
         });
     });
 }
-
-
-// ==========================================================
-//                        FIM DA AÇÃO 3
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO setupNavigation
-// ==========================================================
 
 function setupNavigation() {
     // Pega a permissão de admin do localStorage
@@ -3114,36 +2717,15 @@ function setupNavigation() {
             });
             resetLojaForm();
             resetVendaForm();
+            
+            // Carrega a aba sob demanda (Lazy Loading)
+            if (typeof window.loadTabOnDemand === 'function') {
+                window.loadTabOnDemand(target);
+            }
         });
     });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-// ==========================================================
-//   INÍCIO DA AÇÃO 2: FUNÇÕES PARA RENDERIZAR OS HISTÓRICOS
-// ==========================================================
-
-function renderTabelaHistoricoComissao() {
-    const tabelaBody = document.getElementById('tabela-historico-comissao-body');
-    if (!tabelaBody) return;
-    tabelaBody.innerHTML = '';
-
-    // Ordena o histórico pela data mais recente primeiro
-    const historicoOrdenado = [...historicoComissao].sort((a, b) => b.dataInicioVigencia - a.dataInicioVigencia);
-
-    historicoOrdenado.forEach(regra => {
-        const row = `<tr>
-            <td>${regra.dataInicioVigencia.toLocaleDateString('pt-BR')}</td>
-            <td>${regra.tipoLoja}</td>
-            <td>${regra.modeloVenda}</td>
-            <td>${(regra.percentual * 100).toFixed(2)}%</td>
-        </tr>`;
-        tabelaBody.innerHTML += row;
-    });
-}
 
 function renderTabelaHistoricoAluguel() {
     const tabelaBody = document.getElementById('tabela-historico-aluguel-body');
@@ -3171,26 +2753,22 @@ function renderTabelaHistoricoAluguel() {
     });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO 2
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR TABELA DE ANÁLISE DETALHADA
-// ==========================================================
-
 function renderTabelaAnaliseComissao() {
     const tabelaBody = document.getElementById('tabela-analise-comissao-body');
     if (!tabelaBody) return;
 
-    tabelaBody.innerHTML = '';
+    // OTIMIZACAO #4: Usar DocumentFragment para evitar multiplos reflows
+    const fragment = document.createDocumentFragment();
+    
+    // OTIMIZACAO #5: Cache de lojas para evitar multiplos find()
+    const lojaMap = new Map(lojas.map(l => [l.id, l]));
+    
     const vendasOrdenadas = [...vendas].sort((a, b) => new Date(b.data) - new Date(a.data));
     
     vendasOrdenadas.forEach(venda => {
-        const loja = lojas.find(l => l.id == venda.lojaId);
+        const loja = lojaMap.get(venda.lojaId);  // OTIMIZACAO #5: O(1) ao inves de O(n)
         const valorTotal = (venda.valor || 0) * (venda.quantidade || 0);
         
-        // --- INÍCIO DA NOVA LÓGICA DE CÁLCULO ---
         let percentualComissao, valorComissao;
 
         // 1. VERIFICA SE A VENDA JÁ TEM A COMISSÃO SALVA
@@ -3215,9 +2793,10 @@ function renderTabelaAnaliseComissao() {
                 valorComissao = 0;
             }
         }
-        // --- FIM DA NOVA LÓGICA ---
 
-        const row = `<tr data-id="${venda.id}">
+        const row = document.createElement('tr');
+        row.dataset.id = venda.id;
+        row.innerHTML = `
             <td>${new Date(venda.data + 'T00:00:00').toLocaleDateString('pt-BR')}</td>
             <td>${loja ? loja.nome : 'N/A'}</td>
             <td>${venda.tipoLoja || (loja ? loja.tipo : 'N/A')}</td>
@@ -3228,23 +2807,20 @@ function renderTabelaAnaliseComissao() {
             <td>${valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
             <td class="comissao-percentual-cell">
                 <span>${(percentualComissao * 100).toFixed(2)}%</span>
-                <button class="btn-edit-comissao" title="Editar comissão">✏️</button>
+                <button class="btn-edit-comissao" title="Editar comissao">✏️</button>
             </td>
             <td class="comissao-valor-cell">
                 ${valorComissao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
             </td>
-        </tr>`;
+        `;
         
-        tabelaBody.innerHTML += row;
+        fragment.appendChild(row);
     });
+    
+    // Limpa e adiciona tudo de uma vez (1 reflow ao inves de N)
+    tabelaBody.innerHTML = '';
+    tabelaBody.appendChild(fragment);
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-// ==========================================================
-//       INÍCIO DA AÇÃO: CRIAR FUNÇÃO DE SINCRONIZAÇÃO DE DATAS
-// ==========================================================
 
 function syncDateFilters(sourceId) {
     // 1. Pega a referência de todos os 4 campos de data
@@ -3269,71 +2845,60 @@ function syncDateFilters(sourceId) {
     }
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
 
-
-function renderTabelaVendas() {
-    const vendasFiltradas = getFilteredVendasTabela();
-    tabelaVendasBody.innerHTML = '';
-    const vendasOrdenadas = [...vendasFiltradas].sort((a, b) => new Date(b.data) - new Date(a.data));
-    
-    vendasOrdenadas.forEach(venda => {
-        // ==========================================================
-        //                    INÍCIO DA CORREÇÃO
-        // ==========================================================
-        
-        // 1. CORREÇÃO: A variável 'loja' é definida AQUI, dentro do loop.
-        // Para cada 'venda', procuramos a 'loja' correspondente no array de lojas.
-        const loja = lojas.find(l => l.id == venda.lojaId);
-        
-        // ==========================================================
-        //                     FIM DA CORREÇÃO
-        // ==========================================================
-
-        const totalVenda = venda.valor * venda.quantidade;
-
-        // Agora o código abaixo funcionará, pois a variável 'loja' existe e é a correta.
-        const row = `<tr>
-            <td>${new Date(venda.data + 'T00:00:00').toLocaleDateString('pt-BR')}</td>
-            <td>${loja ? loja.nome : 'N/A'}</td>
-            <td>${venda.tipoLoja || (loja ? loja.tipo : 'N/A')}</td>
-            <td>${venda.modelo}</td>
-            <td>${venda.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-            <td>${venda.modeloVenda || 'N/A'}</td>
-            <td>${venda.formaPagamento || 'N/A'}</td>
-            <td>${venda.quantidade}</td>
-            <td>${totalVenda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-            <td class="actions-cell">
-                <button class="btn-table-action btn-table-edit" data-id="${venda.id}">Editar</button>
-                <button class="btn-table-action btn-table-delete" data-id="${venda.id}">Excluir</button>
-            </td>
-        </tr>`;
-        
-        tabelaVendasBody.innerHTML += row;
-    });
-
-    document.querySelectorAll('#tabela-vendas .btn-table-edit').forEach(b => b.onclick = (e) => editVenda(e.target.dataset.id));
-    document.querySelectorAll('#tabela-vendas .btn-table-delete').forEach(b => b.onclick = (e) => deleteVenda(e.target.dataset.id));
-}
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO DE RENDERIZAÇÃO (DEFINITIVO)
-// ==========================================================
 
 function renderTabelaMovimentacoesEstoque() {
     const tabelaBody = document.getElementById('tabela-movimentacoes-estoque-body');
     if (!tabelaBody) return;
 
-    tabelaBody.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    const lojaMap = new Map(lojas.map(l => [l.id, l]));
+    const produtoMap = new Map(produtos.map(p => [p.id, p]));
 
     const userLojaId = localStorage.getItem('userLojaId');
-    let movimentacoesParaExibir = movimentacoesEstoque;
+    
+    // Filtrar movimentações dos últimos 30 dias
+    const hoje = new Date();
+    const trinta_dias_atras = new Date(hoje.getTime() - 30 * 24 * 60 * 60 * 1000);
+    
+    let movimentacoesParaExibir = movimentacoesEstoque.filter(mov => {
+        const dataMov = mov.data instanceof Date ? mov.data : new Date(mov.data);
+        return dataMov >= trinta_dias_atras;
+    });
 
     if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
-        movimentacoesParaExibir = movimentacoesEstoque.filter(mov => mov.lojaId === userLojaId);
+        movimentacoesParaExibir = movimentacoesParaExibir.filter(mov => mov.lojaId === userLojaId);
     }
+
+    const movimentacoesOrdenadas = [...movimentacoesParaExibir].sort((a, b) => {
+        const timeA = a.data ? (a.data instanceof Date ? a.data.getTime() : new Date(a.data).getTime()) : 0;
+        const timeB = b.data ? (b.data instanceof Date ? b.data.getTime() : new Date(b.data).getTime()) : 0;
+        return timeB - timeA;
+    });
+
+    movimentacoesOrdenadas.forEach(mov => {
+        const loja = lojaMap.get(mov.lojaId);
+        const produto = produtoMap.get(mov.produtoId);
+        
+        const dataFormatada = mov.data ? (mov.data instanceof Date ? mov.data.toLocaleDateString('pt-BR') : new Date(mov.data).toLocaleDateString('pt-BR')) : 'N/A';
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${dataFormatada}</td>
+            <td>${loja ? loja.nome : 'N/A'}</td>
+            <td>${produto ? produto.modelo : 'N/A'}</td>
+            <td>${mov.tipoMovimentacao}</td>
+            <td>${mov.quantidade}</td>
+            <td>${mov.observacao || ''}</td>
+        `;
+        
+        fragment.appendChild(row);
+    });
+    
+    tabelaBody.innerHTML = '';
+    tabelaBody.appendChild(fragment);
+}
+
 
     // --- AQUI ESTÁ A CORREÇÃO ---
     // Trocamos .toMillis() por .getTime(), que é o método correto para objetos Date do JavaScript.
@@ -3362,12 +2927,6 @@ function renderTabelaMovimentacoesEstoque() {
         
         tabelaBody.innerHTML += row;
     });
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
 
 async function handleInventarioSubmit(e) {
     e.preventDefault();
@@ -3435,9 +2994,6 @@ async function handleInventarioSubmit(e) {
         inventarioFeedbackMsg.classList.remove('hidden');
     }
 }
-// ==========================================================
-//       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO setupForms COMPLETA
-// ==========================================================
 
 function setupForms() {
     // --- Lógica do formulário de Lojas ---
@@ -3534,11 +3090,31 @@ function setupForms() {
 
         try {
             if (id) {
+                // EDIÇÃO: Atualiza incrementalmente (OTIMIZAÇÃO)
                 await db.collection('vendas').doc(id).update(vendaData);
+                
+                // Encontra a venda no array local e atualiza seus valores
+                const vendaLocal = vendas.find(v => v.id === id);
+                if (vendaLocal) {
+                    Object.assign(vendaLocal, vendaData);
+                }
+                
+                // Renderiza APENAS a tabela de vendas (não recarrega tudo)
+                renderTabelaVendas();
             } else {
-                await db.collection('vendas').add(vendaData);
+                // NOVO: Salva e atualiza incrementalmente (OTIMIZAÇÃO)
+                const docRef = await db.collection('vendas').add(vendaData);
+                
+                // Adiciona a nova venda ao array local com o ID gerado
+                const novaVenda = {
+                    id: docRef.id,
+                    ...vendaData
+                };
+                vendas.push(novaVenda);
+                
+                // Renderiza APENAS a tabela de vendas (não recarrega tudo)
+                renderTabelaVendas();
             }
-            await loadDataFromFirebase();
             resetVendaForm(); 
         } catch (error) {
             console.error("Erro ao salvar venda no Firebase:", error);
@@ -3632,10 +3208,6 @@ function setupForms() {
     }
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
 // 3. Crie estas duas novas funções para popular os seletores
 function populateInventarioLojaSelect() {
     if (!inventarioLojaSelect) return;
@@ -3652,9 +3224,8 @@ function populateInventarioProdutoSelect() {
         inventarioProdutoSelect.innerHTML += `<option value="${produto.id}">${produto.modelo}</option>`;
     });
 }
-// ==========================================================
-    //           INÍCIO DA AÇÃO 3: LÓGICA DE ENTRADA DE ESTOQUE
-    // ==========================================================
+
+function setupEstoqueForm() {
     formEntradaEstoque.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -3682,24 +3253,41 @@ function populateInventarioProdutoSelect() {
                 observacao: observacao,
                 vendaId: null // Não é uma venda
             };
-            await db.collection('movimentacoesEstoque').add(movimentacao);
+            const docRef = await db.collection('movimentacoesEstoque').add(movimentacao);
 
             // 2. Atualizar o saldo em 'estoqueAtual'
             const estoqueDocRef = db.collection('estoqueAtual').doc(`${lojaId}_${produtoId}`);
             await estoqueDocRef.set({
                 lojaId: lojaId,
                 produtoId: produtoId,
-                quantidade: firebase.firestore.FieldValue.increment(quantidade), // Incrementa o valor existente
+                quantidade: firebase.firestore.FieldValue.increment(quantidade),
                 ultimaAtualizacao: firebase.firestore.Timestamp.now()
-            }, { merge: true }); // 'merge: true' cria o documento se não existir, ou atualiza se existir
+            }, { merge: true });
 
             estoqueFeedbackMsg.textContent = 'Entrada de estoque registrada com sucesso!';
-            estoqueFeedbackMsg.className = 'loja-success-msg'; // Reutiliza o estilo de sucesso
+            estoqueFeedbackMsg.className = 'loja-success-msg';
             estoqueFeedbackMsg.classList.remove('hidden');
             
+            // OTIMIZACAO: Atualizar incrementalmente ao inves de recarregar tudo
+            const novaMovimentacao = {
+                id: docRef.id,
+                data: new Date(dataEntrada + 'T00:00:00'),
+                lojaId: lojaId,
+                produtoId: produtoId,
+                tipoMovimentacao: 'ENTRADA',
+                quantidade: quantidade,
+                observacao: observacao,
+                vendaId: null
+            };
+            
+            // Adicionar ao array local
+            movimentacoesEstoque.unshift(novaMovimentacao);
+            
+            // Renderizar apenas a tabela de movimentacoes
+            renderTabelaMovimentacoesEstoque();
+            
             formEntradaEstoque.reset();
-            estoqueDataEntrada.valueAsDate = new Date(); // Reseta a data para hoje
-            await loadDataFromFirebase(); // Recarrega todos os dados para atualizar as tabelas
+            estoqueDataEntrada.valueAsDate = new Date();
 
         } catch (error) {
             console.error("Erro ao registrar entrada de estoque:", error);
@@ -3708,19 +3296,7 @@ function populateInventarioProdutoSelect() {
             estoqueFeedbackMsg.classList.remove('hidden');
         }
     });
-    // ==========================================================
-    //                        FIM DA AÇÃO 3                       
-    // ==========================================================
-// ==========================================================
-//                        FIM DA CORREÇÃO
-// ==========================================================
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: LÓGICA DA TABELA DE RESUMO
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO populateComissaoFilters
-// ==========================================================
+}
 
 function populateComissaoFilters() {
     // 1. Pega a referência aos novos campos de data
@@ -3738,10 +3314,6 @@ function populateComissaoFilters() {
     if (filterStartDate) filterStartDate.onchange = renderTabelaResumoComissao;
     if (filterEndDate) filterEndDate.onchange = renderTabelaResumoComissao;
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
 
 // --- 2. FUNÇÃO PARA ENCONTRAR O ALUGUEL VIGENTE ---
 function getAluguelVigente(dataReferencia, lojaId, tipoLoja) {
@@ -3763,18 +3335,6 @@ function getAluguelVigente(dataReferencia, lojaId, tipoLoja) {
 
     return 0; // Retorna 0 se nenhuma regra for encontrada
 }
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 1): CRIAR A NOVA FUNÇÃO
-// ==========================================================
-
-
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 1)
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO renderTabelaResumoComissao
-// ==========================================================
 
 function renderTabelaResumoComissao() {
     const tabelaBody = document.getElementById('tabela-resumo-comissao-body');
@@ -3870,11 +3430,6 @@ function renderTabelaResumoComissao() {
     document.getElementById('card-total-a-pagar').textContent = totalAPagarGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-
     // --- FUNÇÕES DE RESET DE FORMULÁRIO ---
     function resetLojaForm() {
         lojaForm.reset();
@@ -3886,6 +3441,17 @@ function renderTabelaResumoComissao() {
         lojaErrorMsg.classList.add('hidden');
         lojaSuccessMsg.classList.add('hidden');
     }
+
+// OTIMIZACAO #6: Funcao auxiliar para verificar se elemento esta visivel
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
 function resetVendaForm() {
     // 1. Limpa todos os campos do formulário
@@ -3910,6 +3476,11 @@ function resetVendaForm() {
     // 7. Limpa os campos que não são resetados automaticamente (readonly)
     vendaTotalInput.value = '';
     vendaTipoLojaDisplay.value = '';
+    
+    // Repopula os selects para garantir que os dados estejam presentes
+    if (typeof window.populateLojasSelect === 'function') window.populateLojasSelect();
+    if (typeof window.populateProdutosSelect === 'function') window.populateProdutosSelect();
+    
     applySecurityRules();
 }
 
@@ -3934,7 +3505,6 @@ async function deleteLoja(id) {
         try {
             await db.collection('lojas').doc(id).delete();
             await loadDataFromFirebase();
-            console.log(`Loja com ID ${id} excluída com sucesso.`);
         } catch (error) {
             console.error("Erro ao excluir loja no Firebase:", error);
             alert("Ocorreu um erro ao tentar excluir a loja. Verifique o console.");
@@ -3950,35 +3520,26 @@ function populateComissaoLojaSelect() {
     });
 }
 
-// ==========================================================
-//           INÍCIO DA AÇÃO 2.2: NOVAS FUNÇÕES POPULATE        
-// ==========================================================
-
-function populateEstoqueLojaSelect() {
+// OTIMIZACAO: Funcao global para popular select de Loja na aba de Estoque
+window.populateEstoqueLojaSelect = function() {
+    const estoqueLojaSelect = document.getElementById('estoque-loja');
     if (!estoqueLojaSelect) return;
     estoqueLojaSelect.innerHTML = '<option value="">Selecione a loja</option>';
     lojas.sort((a, b) => a.nome.localeCompare(b.nome)).forEach(loja => {
         estoqueLojaSelect.innerHTML += `<option value="${loja.id}">${loja.nome}</option>`;
     });
-}
+};
 
-function populateEstoqueProdutoSelect() {
+// OTIMIZACAO: Funcao global para popular select de Produto na aba de Estoque
+window.populateEstoqueProdutoSelect = function() {
+    const estoqueProdutoSelect = document.getElementById('estoque-produto');
     if (!estoqueProdutoSelect) return;
     estoqueProdutoSelect.innerHTML = '<option value="">Selecione o produto</option>';
     // Apenas produtos ativos devem ser selecionáveis para entrada
     produtos.filter(p => p.ativo).sort((a, b) => a.modelo.localeCompare(b.modelo)).forEach(produto => {
         estoqueProdutoSelect.innerHTML += `<option value="${produto.id}">${produto.modelo}</option>`;
     });
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO 2.2                       
-// ==========================================================
-
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: ADICIONAR/CORRIGIR A FUNÇÃO FALTANTE
-// ==========================================================
+};
 
 // Cole esta função junto com as outras funções auxiliares, como deleteVenda, editVenda, etc.
 
@@ -3994,7 +3555,6 @@ function getComissaoVigente(dataVenda, lojaId, tipoLoja, modeloVenda) {
 
     if (excecoesCandidatas.length > 0) {
         excecoesCandidatas.sort((a, b) => b.dataInicioVigencia - a.dataInicioVigencia);
-        console.log("Regra de EXCEÇÃO de comissão encontrada para a loja:", lojaId);
         return excecoesCandidatas[0]; // Retorna a exceção mais recente
     }
 
@@ -4008,7 +3568,6 @@ function getComissaoVigente(dataVenda, lojaId, tipoLoja, modeloVenda) {
 
     if (regrasGeraisCandidatas.length > 0) {
         regrasGeraisCandidatas.sort((a, b) => b.dataInicioVigencia - a.dataInicioVigencia);
-        console.log("Regra GERAL de comissão encontrada para o tipo:", tipoLoja);
         return regrasGeraisCandidatas[0]; // Retorna a regra geral mais recente
     }
 
@@ -4016,10 +3575,6 @@ function getComissaoVigente(dataVenda, lojaId, tipoLoja, modeloVenda) {
     console.warn(`Nenhuma regra de comissão (geral ou exceção) encontrada para a data ${dataVenda}`);
     return null;
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO 2
-// ==========================================================
 
 function renderTabelaHistoricoComissao() {
     const tabelaBody = document.getElementById('tabela-historico-comissao-body');
@@ -4047,7 +3602,6 @@ function renderTabelaHistoricoComissao() {
     });
 }
 
-
     function editVenda(id) {
         const venda = vendas.find(v => v.id == id);
         if (!venda) return;
@@ -4060,13 +3614,13 @@ function renderTabelaHistoricoComissao() {
         vendaValorInput.value = venda.valor;
         vendaFormaPagamentoSelect.value = venda.formaPagamento;
         vendaQuantidadeInput.value = venda.quantidade;
-        vendaValorInput.value = venda.valor;
-        document.getElementById('venda-modelo-venda').value = venda.modeloVenda || ''; // <<<<<<< NOVA LINHA
-        vendaFormaPagamentoSelect.value = venda.formaPagamento;
+        document.getElementById('venda-modelo-venda').value = venda.modeloVenda || '';
         vendaFormTitle.textContent = 'Editando Venda';
         vendaSubmitBtn.textContent = 'Salvar Alteração';
         cancelEditVendaBtn.classList.remove('hidden');
-        formLancamento.scrollIntoView({ behavior: 'smooth' });
+        if (!isElementInViewport(formLancamento)) {
+            formLancamento.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
 function populateLojasFilter() {
@@ -4093,10 +3647,7 @@ function populateLojasFilter() {
     });
 }
 
-
-// ==================================================================
 // VERSÃO CORRIGIDA DA FUNÇÃO DE EXCLUIR VENDA (COM FIREBASE)
-// ==================================================================
 async function deleteVenda(id) {
     // A confirmação do usuário continua igual
     if (confirm('Tem certeza que deseja excluir esta venda?')) {
@@ -4105,12 +3656,12 @@ async function deleteVenda(id) {
             // Pega a coleção 'vendas', encontra o documento com o 'id' e o deleta.
             await db.collection('vendas').doc(id).delete();
 
-            // 2. RECARREGA TODOS OS DADOS DO FIREBASE
-            // Isso garante que os arrays locais (vendas, lojas, etc.) fiquem 100% sincronizados
-            // com o banco de dados, e redesenha a tela inteira.
-            await loadDataFromFirebase();
-
-            console.log(`Venda com ID ${id} excluída com sucesso.`);
+            // 2. OTIMIZAÇÃO: Remove apenas do array local (não recarrega tudo)
+            // Filtra o array removendo a venda com o ID especificado
+            vendas = vendas.filter(v => v.id !== id);
+            
+            // Renderiza APENAS a tabela de vendas (não recarrega tudo)
+            renderTabelaVendas();
 
         } catch (error) {
             console.error("Erro ao excluir venda no Firebase:", error);
@@ -4118,11 +3669,8 @@ async function deleteVenda(id) {
         }
     }
 }
-// ==================================================================
 //           NOVA FUNÇÃO PARA EXCLUIR PRODUTO NO FIREBASE
-// ==================================================================
 async function deleteProduto(id) {
-    console.log(`Tentando excluir produto com ID: ${id}`);
     try {
         // 1. Envia o comando de exclusão para o Firebase
         await db.collection('produtos').doc(id).delete();
@@ -4131,7 +3679,6 @@ async function deleteProduto(id) {
         // Isso removerá o produto da tabela e dos seletores de venda.
         await loadDataFromFirebase();
 
-        console.log(`Produto com ID ${id} excluído com sucesso.`);
         alert('Produto excluído com sucesso!');
 
     } catch (error) {
@@ -4140,48 +3687,49 @@ async function deleteProduto(id) {
     }
 }
 
-
     // --- FUNÇÕES DE RENDERIZAÇÃO DE TABELA ---
     function getFilteredVendasTabela() {
         const dataFiltro = vendasFilterData.value;
         const lojaFiltro = vendasFilterLoja.value;
+        const userLojaId = localStorage.getItem('userLojaId');
+        
+        // OTIMIZACAO #7: Consolidar filtros em um unico filter()
         return vendas.filter(venda => {
             const dataMatch = !dataFiltro || venda.data === dataFiltro;
             const lojaMatch = !lojaFiltro || venda.lojaId == lojaFiltro;
-            return dataMatch && lojaMatch;
+            
+            let userMatch = true;
+            if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
+                userMatch = venda.lojaId === userLojaId;
+            }
+            
+            return dataMatch && lojaMatch && userMatch;
         });
     }
 
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO renderTabelaVendas
-// ==========================================================
-
 function renderTabelaVendas() {
-    // A lógica de filtro por data e pelo seletor da tabela continua igual
+    // OTIMIZACAO #7: Filtro ja consolidado em getFilteredVendasTabela()
     let vendasFiltradas = getFilteredVendasTabela();
 
-    // --- INÍCIO DA NOVA LÓGICA DE FILTRO DE SEGURANÇA ---
-    const userLojaId = localStorage.getItem('userLojaId');
-
-    // 1. Se o usuário é de uma loja específica, aplica um filtro adicional
-    if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
-        vendasFiltradas = vendasFiltradas.filter(venda => venda.lojaId === userLojaId);
-    }
-    // --- FIM DA NOVA LÓGICA DE FILTRO DE SEGURANÇA ---
-
     const tabelaVendasBody = document.getElementById('tabela-vendas-body');
-    tabelaVendasBody.innerHTML = '';
+    
+    // OTIMIZAÇÃO #1: Usar DocumentFragment para evitar múltiplos reflows
+    const fragment = document.createDocumentFragment();
+    
+    // OTIMIZAÇÃO #5: Cache de lojas para evitar múltiplos find()
+    const lojaMap = new Map(lojas.map(l => [l.id, l]));
 
     // Ordena as vendas (já filtradas) da mais recente para a mais antiga
     const vendasOrdenadas = [...vendasFiltradas].sort((a, b) => new Date(b.data) - new Date(a.data));
     
     vendasOrdenadas.forEach(venda => {
-        const loja = lojas.find(l => l.id == venda.lojaId);
+        const loja = lojaMap.get(venda.lojaId);  // OTIMIZAÇÃO #5: O(1) ao invés de O(n)
         const valorUnitario = typeof venda.valor === 'number' ? venda.valor : 0;
         const quantidade = typeof venda.quantidade === 'number' ? venda.quantidade : 0;
         const totalVenda = valorUnitario * quantidade;
 
-        const row = `<tr>
+        const row = document.createElement('tr');
+        row.innerHTML = `
             <td>${new Date(venda.data + 'T00:00:00').toLocaleDateString('pt-BR')}</td>
             <td>${loja ? loja.nome : 'N/A'}</td>
             <td>${venda.tipoLoja || (loja ? loja.tipo : 'N/A')}</td>
@@ -4195,19 +3743,17 @@ function renderTabelaVendas() {
                 <button class="btn-table-action btn-table-edit" data-id="${venda.id}">Editar</button>
                 <button class="btn-table-action btn-table-delete" data-id="${venda.id}">Excluir</button>
             </td>
-        </tr>`;
+        `;
         
-        tabelaVendasBody.innerHTML += row;
+        fragment.appendChild(row);
     });
 
-    // Adiciona os eventos de clique aos botões
-    document.querySelectorAll('#tabela-vendas .btn-table-edit').forEach(b => b.onclick = (e) => editVenda(e.target.dataset.id));
-    document.querySelectorAll('#tabela-vendas .btn-table-delete').forEach(b => b.onclick = (e) => deleteVenda(e.target.dataset.id));
+    // Limpa e adiciona tudo de uma vez (1 reflow ao invés de N)
+    tabelaVendasBody.innerHTML = '';
+    tabelaVendasBody.appendChild(fragment);
+    
+    // OTIMIZAÇÃO #2: Event Delegation - eventos serão tratados no container
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
 
     function renderTabelaLojas() {
         // A lógica do subtítulo também precisa ser corrigida para contar "Shopping" e "Rua"
@@ -4235,31 +3781,9 @@ function renderTabelaVendas() {
     }
 
     
-    // --- FUNÇÕES DE POPULAR SELECTS E FILTROS ---
-    function populateLojasSelect() {
-        vendaLojaSelect.innerHTML = '<option value="">Selecione a loja</option>';
-        lojas.forEach(loja => {
-            vendaLojaSelect.innerHTML += `<option value="${loja.id}">${loja.nome}</option>`;
-        });
-    }
 
-    function populateProdutosSelect() {
-        // ==========================================================
-        //               A LÓGICA CORRETA ESTÁ AQUI
-        // ==========================================================
-        
-        // 1. Filtra o array 'produtos', pegando APENAS os que têm 'p.ativo === true'.
-        const produtosAtivos = produtos.filter(p => p.ativo);
-        
-        // 2. Limpa o select de modelos.
-        vendaModeloSelect.innerHTML = '<option value="">Selecione o modelo</option>';
 
-        // 3. Popula o select usando APENAS a lista de produtos ativos.
-        produtosAtivos.forEach(produto => {
-            vendaModeloSelect.innerHTML += `<option value="${produto.modelo}">${produto.modelo}</option>`;
-        });
-        // ==========================================================
-    }
+
 
     function populateVendasFilters() {
         vendasFilterLoja.innerHTML = '<option value="">Todas</option>';
@@ -4285,6 +3809,8 @@ function renderTabelaVendas() {
         document.body.removeChild(link);
     }
     
+
+
 /* ================================================================== */
 /* BLOCO 2: ALTERAÇÃO NO JAVASCRIPT (Renderização da Tabela)        */
 /* ================================================================== */
@@ -4324,11 +3850,6 @@ function renderProdutosLista() {
         produtosListaBody.appendChild(row);
     });
 }
-
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: SUBSTITUIR A FUNÇÃO setupProdutosInteractivity
-// ==========================================================
 
 function setupProdutosInteractivity() {
     // Lógica do modal de confirmação (essencial para os botões)
@@ -4443,14 +3964,6 @@ function setupProdutosInteractivity() {
     });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: RESTAURAR A FUNÇÃO populateFilters
-// ==========================================================
-
 function populateFilters() {
     // Popula o filtro de Mês (usado na tabela de detalhamento e na aba de comissão)
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -4472,19 +3985,6 @@ function populateFilters() {
         filterYear.value = currentYear;
     }
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-
-// ==========================================================
-//                        FIM DA AÇÃO 1
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO getFilteredVendas
-// ==========================================================
 
 function getFilteredVendas() {
     // 1. Pega os valores dos novos campos de data do Dashboard
@@ -4509,10 +4009,6 @@ function getFilteredVendas() {
     });
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
 // 3. ATUALIZE A FUNÇÃO applyDashboardLojaFilter
 function applyDashboardLojaFilter(vendasParaFiltrar) {
     const userLojaId = localStorage.getItem('userLojaId');
@@ -4531,17 +4027,13 @@ function applyDashboardLojaFilter(vendasParaFiltrar) {
     return vendasParaFiltrar.filter(venda => venda.lojaId === selectedLoja);
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO 3
-// ==========================================================
-
-// ==========================================================
-//                        FIM DA AÇÃO 1
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO 2: CRIAR FUNÇÃO "MAESTRO"
-// ==========================================================
+function applyDashboardVendaFilter(vendasParaFiltrar) {
+    const selectedVenda = document.getElementById('filter-venda').value;
+    if (!selectedVenda) {
+        return vendasParaFiltrar;
+    }
+    return vendasParaFiltrar.filter(venda => venda.modeloVenda === selectedVenda);
+}
 
 function runDashboardUpdate() {
     // 1. Pega os dados filtrados por data
@@ -4549,6 +4041,9 @@ function runDashboardUpdate() {
 
     // 2. Aplica o filtro de loja do dashboard principal
     let vendasParaDashboard = applyDashboardLojaFilter(vendasFiltradasData);
+    
+    // 2.5. Aplica o filtro de venda (CASA+ ou Store in Store)
+    vendasParaDashboard = applyDashboardVendaFilter(vendasParaDashboard);
 
     // 3. Chama a função de desenhar o dashboard, passando os dados corretos
     updateDashboard(vendasParaDashboard);
@@ -4557,13 +4052,6 @@ function runDashboardUpdate() {
     updateDetalheVendasTable(vendasFiltradasData);
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO 2
-// ==========================================================
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO updateDashboard
-// ==========================================================
-
 function updateDashboard(vendasFiltradas) { 
     document.getElementById('venda-dia-chart').closest('.chart-wrapper').style.height = '350px';
 
@@ -4571,7 +4059,6 @@ function updateDashboard(vendasFiltradas) {
     const totalUnidades = vendasFiltradas.reduce((sum, v) => sum + v.quantidade, 0);
     const ticketMedio = totalUnidades > 0 ? vendaTotal / totalUnidades : 0;
 
-    // --- INÍCIO DA LÓGICA CORRIGIDA PARA VENDA MÉDIA/DIA ---
     const startDateString = document.getElementById('filter-start-date').value;
     const endDateString = document.getElementById('filter-end-date').value;
     let numeroDeDiasParaMedia = 1; // Começa com 1 para evitar divisão por zero
@@ -4588,7 +4075,6 @@ function updateDashboard(vendasFiltradas) {
     }
     
     const vendaMediaDia = vendaTotal / numeroDeDiasParaMedia;
-    // --- FIM DA LÓGICA CORRIGIDA ---
     
     // --- Atualização dos cards (o resto permanece igual) ---
     document.getElementById('card-venda-total').textContent = vendaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -4596,9 +4082,7 @@ function updateDashboard(vendasFiltradas) {
     document.getElementById('card-ticket-medio').textContent = ticketMedio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById('card-venda-media').textContent = vendaMediaDia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     
-    const movimentacoesParaCalcular = getFilteredMovimentacoes();
-    const estoqueTotal = movimentacoesParaCalcular.reduce((sum, mov) => sum + mov.quantidade, 0);
-    document.getElementById('card-estoque-total').textContent = estoqueTotal;
+    // card-estoque-total removido (dados mantidos no Firebase)
 
     // Chamadas para os outros gráficos (inalteradas)
     updateRankingLojasChart(vendasFiltradas);
@@ -4607,180 +4091,22 @@ function updateDashboard(vendasFiltradas) {
     updateVendaFormaPagamentoChart(vendasFiltradas);
     updateRankingGRCChart(vendasFiltradas);
     updateParticipacaoChart(vendasFiltradas, totalUnidades);
-    updateEstoquePorLojaChart();
-    updateEstoquePorModeloChart();
+    // updateEstoquePorLojaChart() removido (aba de estoque removida)
+    // updateEstoquePorModeloChart() removido (aba de estoque removida)
     updateVendaDiaChart(vendasFiltradas);
     updateVendaSemanaChart(vendasFiltradas);
     updateVendaMensalChart();
     updateVendaAnualChart();
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 2): ATUALIZAR FUNÇÕES DE GRÁFICO
-// ==========================================================
-
-// 1. FUNÇÃO COMPLETA PARA O GRÁFICO DE ESTOQUE POR LOJA
-function updateEstoquePorLojaChart() {
-    const ctx = document.getElementById('estoque-por-loja-chart').getContext('2d');
-    
-    // --- AJUSTE ADICIONADO AQUI ---
-    const movimentacoesParaCalcular = getFilteredMovimentacoes();
-    // --- FIM DO AJUSTE ---
-
-    const estoquePorLoja = movimentacoesParaCalcular.reduce((acc, mov) => {
-        const loja = lojas.find(l => l.id === mov.lojaId);
-        if (loja) {
-            acc[loja.nome] = (acc[loja.nome] || 0) + mov.quantidade;
-        }
-        return acc;
-    }, {});
-
-    const sortedEstoque = Object.entries(estoquePorLoja).sort(([, a], [, b]) => b - a);
-
-    const numeroDeBarras = sortedEstoque.length;
-    const espacoVerticalPorBarra = 40;
-    const alturaMinimaDoGrafico = 80;
-    const alturaCalculada = Math.max(alturaMinimaDoGrafico, numeroDeBarras * espacoVerticalPorBarra);
-    
-    const canvasContainer = document.getElementById('estoque-loja-canvas-container');
-    canvasContainer.style.height = `${alturaCalculada}px`;
-
-    const options = {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            datalabels: {
-                anchor: 'end',
-                align: 'right',
-                offset: 8,
-                color: document.body.classList.contains('dark-mode') ? '#f0f2f5' : '#172B4D',
-                font: { weight: 'bold' },
-                formatter: (value) => Math.round(value)
-            }
-        },
-        scales: {
-            x: { 
-                display: true, 
-                grid: { display: false },
-                ticks: { precision: 0 },
-                beginAtZero: true 
-            },
-            y: { 
-                display: true, 
-                grid: { display: false, drawBorder: false }
-            }
-        }
-    };
-
-    const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-    gradient.addColorStop(0, '#f5d393');
-    gradient.addColorStop(1, '#f5d393');
-
-    createChart(ctx, 'bar', {
-        labels: sortedEstoque.map(([nome]) => nome),
-        datasets: [{
-            label: 'Estoque Total',
-            data: sortedEstoque.map(([, qtd]) => qtd),
-            backgroundColor: gradient,
-            borderRadius: 8
-        }]
-    }, options);
-}
-
-
-// 2. FUNÇÃO COMPLETA PARA O GRÁFICO DE ESTOQUE POR MODELO
-function updateEstoquePorModeloChart() {
-    const ctx = document.getElementById('estoque-por-modelo-chart').getContext('2d');
-    
-    // --- AJUSTE ADICIONADO AQUI ---
-    const movimentacoesParaCalcular = getFilteredMovimentacoes();
-    // --- FIM DO AJUSTE ---
-
-    const estoquePorModelo = movimentacoesParaCalcular.reduce((acc, mov) => {
-        const produto = produtos.find(p => p.id === mov.produtoId);
-        if (produto) {
-            acc[produto.modelo] = (acc[produto.modelo] || 0) + mov.quantidade;
-        }
-        return acc;
-    }, {});
-
-    const sortedEstoque = Object.entries(estoquePorModelo).sort(([, a], [, b]) => b - a);
-
-    const numeroDeBarras = sortedEstoque.length;
-    const espacoVerticalPorBarra = 40;
-    const alturaMinimaDoGrafico = 80;
-    const alturaCalculada = Math.max(alturaMinimaDoGrafico, numeroDeBarras * espacoVerticalPorBarra);
-
-    const canvasContainer = document.getElementById('estoque-modelo-canvas-container');
-    canvasContainer.style.height = `${alturaCalculada}px`;
-
-    const options = {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            datalabels: {
-                anchor: 'end',
-                align: 'right',
-                offset: 8,
-                color: document.body.classList.contains('dark-mode') ? '#f0f2f5' : '#172B4D',
-                font: { weight: 'bold' },
-                formatter: (value) => Math.round(value)
-            }
-        },
-        scales: {
-            x: { 
-                display: true, 
-                grid: { display: false },
-                    ticks: { 
-                    precision: 0,
-                    display: false
-                },
-                beginAtZero: true 
-            },
-            y: { 
-                display: true, 
-                grid: { display: false, drawBorder: false }
-            }
-        }
-    };
-
-    const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-    gradient.addColorStop(0, '#f39772');
-    gradient.addColorStop(1, '#f39772');
-
-    createChart(ctx, 'bar', {
-        labels: sortedEstoque.map(([nome]) => nome),
-        datasets: [{
-            label: 'Estoque Total',
-            data: sortedEstoque.map(([, qtd]) => qtd),
-            backgroundColor: gradient,
-            borderRadius: 8
-        }]
-    }, options);
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 2)
-// ==========================================================
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
+// FUNCOES DE ESTOQUE REMOVIDAS (dados mantidos no Firebase)
 
     function createChart(ctx, type, data, options) {
         const chartId = ctx.canvas.id;
         if (charts[chartId]) charts[chartId].destroy();
         
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-        const textColor = isDarkMode ? '#f0f2f5' : '#172B4D';
+        const gridColor = 'rgba(0, 0, 0, 0.1)';
+        const textColor = '#172B4D';
         Chart.defaults.color = textColor;
         Chart.register(ChartDataLabels);
 
@@ -4802,7 +4128,7 @@ function updateEstoquePorModeloChart() {
             plugins: {
                 legend: { labels: { color: textColor } },
                 datalabels: {
-                    color: type === 'bar' ? '#fff' : (isDarkMode ? '#fff' : '#333'),
+                    color: type === 'bar' ? '#fff' : '#333',
                     anchor: 'end',
                     align: 'end',
                     formatter: (value) => value > 0 ? value : ''
@@ -4862,10 +4188,6 @@ function updateRankingModeloChart(vendasFiltradas) {
     });
 }
 
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 1): ATUALIZAR GRÁFICO DE RANKING DE LOJAS
-// ==========================================================
-
 function updateRankingLojasChart(vendasFiltradas) {
     const ctx = document.getElementById('ranking-lojas-chart').getContext('2d');
     const vendasPorLoja = vendasFiltradas.reduce((acc, v) => {
@@ -4875,7 +4197,6 @@ function updateRankingLojasChart(vendasFiltradas) {
     }, {});
     const sortedLojas = Object.entries(vendasPorLoja).sort(([, a], [, b]) => b - a);
 
-    // --- INÍCIO DA NOVA LÓGICA DE ESTILO ---
     const isSingleBar = sortedLojas.length === 1;
     
     // 1. Define as opções do gráfico condicionalmente
@@ -4915,8 +4236,6 @@ function updateRankingLojasChart(vendasFiltradas) {
     
     const barThickness = isSingleBar ? undefined : 18; // Deixa o Chart.js decidir a espessura na barra única
 
-    // --- FIM DA NOVA LÓGICA DE ESTILO ---
-
     // Lógica de altura dinâmica (mantida)
     const numeroDeLojas = sortedLojas.length;
     const alturaPorBarra = isSingleBar ? 200 : 30; // Barra única fica bem maior
@@ -4936,17 +4255,9 @@ function updateRankingLojasChart(vendasFiltradas) {
     }, options); // Passa as opções dinâmicas para a função de criar o gráfico
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 1)
-// ==========================================================
-
 /* ================================================================== */
 /* BLOCO ÚNICO: ALTERAÇÃO NO JAVASCRIPT (Participação em Percentual) */
 /* ================================================================== */
-
-// ==========================================================
-//       INÍCIO DA AÇÃO (PASSO 2): ATUALIZAR GRÁFICO DE SHARE
-// ==========================================================
 
 function updateParticipacaoChart(vendasFiltradas) {
     const ctx = document.getElementById('participacao-lojas-chart').getContext('2d');
@@ -4958,7 +4269,6 @@ function updateParticipacaoChart(vendasFiltradas) {
     }, {});
     const sorted = Object.entries(vendasPorLoja).sort(([, a], [, b]) => b - a);
 
-    // --- INÍCIO DA NOVA LÓGICA DE ESTILO ---
     const isSingleBar = sorted.length === 1;
 
     const options = {
@@ -4997,7 +4307,6 @@ function updateParticipacaoChart(vendasFiltradas) {
     }
     
     const barThickness = isSingleBar ? undefined : 18;
-    // --- FIM DA NOVA LÓGICA DE ESTILO ---
 
     const numeroDeLojasParticipacao = sorted.length;
     const alturaPorBarraParticipacao = isSingleBar ? 200 : 30;
@@ -5016,15 +4325,6 @@ function updateParticipacaoChart(vendasFiltradas) {
         }]
     }, options);
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO (PASSO 2)
-// ==========================================================
-
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: ATUALIZAR A FUNÇÃO updateDetalheVendasTable
-// ==========================================================
 
 function updateDetalheVendasTable(vendasFiltradas) {
     const userLojaId = localStorage.getItem('userLojaId');
@@ -5134,11 +4434,6 @@ function updateDetalheVendasTable(vendasFiltradas) {
     detalheVendasBody.innerHTML = bodyHTML;
 }
 
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-
 function updateVendaTipoLojaChart(vendasFiltradas) {
     const ctx = document.getElementById('venda-tipo-loja-chart').getContext('2d');
     const totalUnidades = vendasFiltradas.reduce((sum, v) => sum + v.quantidade, 0);
@@ -5181,13 +4476,10 @@ function updateVendaTipoLojaChart(vendasFiltradas) {
                 gradientYellow, 
                 gradientGreen
             ],
-            borderColor: document.body.classList.contains('dark-mode') ? '#111111' : '#ffffff', // Corrigido para fundo branco no modo claro
+            borderColor: '#ffffff', // Fundo branco no modo claro
             borderWidth: 0 // Adicionado uma pequena borda para melhor separação
         }]
     }, {
-        // ==========================================================
-        //            INÍCIO DO BLOCO DE CÓDIGO ADICIONADO
-        // ==========================================================
         plugins: {
             // 1. Configura a legenda para aparecer na parte de baixo
             legend: { 
@@ -5220,20 +4512,11 @@ function updateVendaTipoLojaChart(vendasFiltradas) {
                 }
             }
         },
-        // ==========================================================
-        //                 FIM DO BLOCO ADICIONADO
-        // ==========================================================
         
         // Mantém a sua configuração de "furo" da rosca
         cutout: '60%' 
     });
 }
-
-
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: AJUSTAR O GRÁFICO DE MODALIDADE
-// ==========================================================
 
 function updateVendaFormaPagamentoChart(vendasFiltradas) {
     const ctx = document.getElementById('venda-forma-pagamento-chart').getContext('2d');
@@ -5271,11 +4554,6 @@ function updateVendaFormaPagamentoChart(vendasFiltradas) {
         }
     });
 }
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
 
 function updateRankingGRCChart(vendasFiltradas) {
     const ctx = document.getElementById('ranking-grc-chart').getContext('2d');
@@ -5319,15 +4597,9 @@ function updateVendaDiaChart(vendasFiltradas) {
     }, {});
     const sorted = Object.entries(vendasPorDia).sort(([a], [b]) => new Date(a) - new Date(b));
     
-    // As variáveis isMobile e isDarkMode não são mais necessárias para o formatter aqui.
+    // As variáveis isMobile não são mais necessárias para o formatter aqui.
     const isMobile = window.innerWidth <= 768;
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    
     const maxDataValue = Math.max(...sorted.map(([, val]) => val));
-
-    // ==========================================================
-    //            INÍCIO DA LÓGICA DE FORMATAÇÃO
-    // ==========================================================
 
     // 1. Função de formatação com o padrão "Mil" e "Mi"
     const formatarValorAbreviado = (valor) => {
@@ -5349,24 +4621,17 @@ function updateVendaDiaChart(vendasFiltradas) {
         anchor: 'end',
         align: 'top',
         offset: 8,
-        color: isDarkMode ? '#e0e0e0' : '#15191d',
+        color: '#15191d',
         font: { size: 10, weight: 'bold' },
-        backgroundColor: isDarkMode ? 'rgba(40, 40, 40, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
         borderRadius: 4,
         padding: 4,
         // A mágica acontece aqui:
         formatter: (value) => value > 0 ? formatarValorAbreviado(value) : ''
     };
 
-    // ==========================================================
-    //                 FIM DA LÓGICA DE FORMATAÇÃO
-    // ==========================================================
-
     const options = {
         maintainAspectRatio: false,
-        // ==========================================================
-        //           INÍCIO DA CORREÇÃO (PADDING LATERAL)
-        // ==========================================================
         layout: {
             padding: {
                 top: 30,    // Mantém um respiro no topo
@@ -5374,9 +4639,6 @@ function updateVendaDiaChart(vendasFiltradas) {
                 right: 25   // Adiciona espaço na direita para o último rótulo
             }
         },
-        // ==========================================================
-        //            FIM DA CORREÇÃO (PADDING LATERAL)
-        // ==========================================================
         plugins: {
             legend: { display: false },
             datalabels: datalabelsConfig 
@@ -5422,9 +4684,6 @@ function updateVendaDiaChart(vendasFiltradas) {
     createChart(ctx, 'line', data, options);
 }
 
-
-
-
 function updateVendaSemanaChart(vendasFiltradas) {
 
     const ctx = document.getElementById('venda-semana-chart').getContext('2d');
@@ -5456,7 +4715,6 @@ function updateVendaSemanaChart(vendasFiltradas) {
         return keyA.localeCompare(keyB);
     });
 
-    const isDarkMode = document.body.classList.contains('dark-mode');
     const maxDataValue = Math.max(...sorted.map(item => item.value));
     // O gradiente não é mais necessário
     // const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
@@ -5495,13 +4753,13 @@ function updateVendaSemanaChart(vendasFiltradas) {
                 anchor: 'end',
                 align: 'top',
                 offset: 8,
-                color: isDarkMode ? '#e0e0e0' : '#15191d',
+                color: '#15191d',
                 font: {
                     size: 10,
                     weight: 'bold'
                 },
                 formatter: (value) => value > 0 ? value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '',
-                backgroundColor: isDarkMode ? 'rgba(40, 40, 40, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
                 borderRadius: 4,
                 padding: 4
             }
@@ -5560,7 +4818,7 @@ function updateVendaMensalChart() {
             formatter: (value) => value > 0 ? value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ''
           }
         : { 
-            color: document.body.classList.contains('dark-mode') ? '#15191' : '#15191',
+            color: '#15191',
             anchor: 'center',
             align: 'center',
             offset: 4,
@@ -5583,7 +4841,6 @@ function updateVendaMensalChart() {
     });
 }
 
-
 function updateVendaAnualChart() {
     const ctx = document.getElementById('venda-anual-chart').getContext('2d');
 
@@ -5598,10 +4855,6 @@ function updateVendaAnualChart() {
     const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
     gradient.addColorStop(1, '#f39772');
     gradient.addColorStop(0, '#f39772');
-
-    // ==========================================================
-    //           INÍCIO DA LÓGICA CONDICIONAL PARA RÓTULOS
-    // ==========================================================
 
     // 1. Verifica se é mobile
     const isMobile = window.innerWidth <= 768;
@@ -5618,7 +4871,7 @@ function updateVendaAnualChart() {
             formatter: (value) => value > 0 ? value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ''
           }
         : { 
-            color: document.body.classList.contains('dark-mode') ? '#15191' : '#15191',
+            color: '#15191',
             anchor: 'center',
             align: 'center',
             offset: 4,
@@ -5642,9 +4895,6 @@ function updateVendaAnualChart() {
         }
     });
 }
-// ==========================================================
-//       INÍCIO DA AÇÃO 3: POPULAR SELETOR DE LOJAS
-// ==========================================================
 
 function populateAluguelLojaSelect() {
     const select = document.getElementById('regra-aluguel-loja-id');
@@ -5654,49 +4904,21 @@ function populateAluguelLojaSelect() {
     });
 }
 
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR E LIMPAR A FUNÇÃO renderAll
-// ==========================================================
-
-// ==========================================================
-//       INÍCIO DA AÇÃO: CORRIGIR A FUNÇÃO renderAll (DE NOVO)
-// ==========================================================
-
 function renderAll() {
-    // ETAPA 1: Renderiza todas as tabelas com os dados completos
+    
+    // ETAPA 1: Renderiza APENAS as tabelas do Dashboard
     renderTabelaLojas();
     renderProdutosLista();
     renderTabelaVendas();
-    renderTabelaAnaliseComissao();
-    renderTabelaResumoComissao();
-    renderTabelaHistoricoComissao();
-    renderTabelaHistoricoAluguel();
-    renderTabelaMovimentacoesEstoque();
-
-    // ETAPA 2: Popula todos os seletores e datalists
-    populateLojasSelect();
-    populateProdutosSelect();
-    populateVendasFilters();
+    
+    // ETAPA 2: Popula APENAS os seletores do Dashboard
     populateLojasFilter();
-    populateAluguelLojaSelect();
-    populateComissaoLojaSelect();
-    populateGRCSugestoes(); 
+    populateDashboardLojaFilter();
     
-    // ADICIONE A LINHA DE VOLTA AQUI!
-    populateDashboardLojaFilter(); 
-    populateEstoqueLojaSelect();
-    populateEstoqueProdutoSelect();
-
-    populateInventarioLojaSelect(); // <-- ADICIONE ESTA LINHA
-    populateInventarioProdutoSelect(); // <-- ADICIONE ESTA LINHA
-    
-    // ETAPA 3: Configura as interatividades
-    setupComissaoEditing();
+    // ETAPA 3: Configura as interatividades essenciais
     applySecurityRules();
-
-
-        // --- ADICIONE ESTE BLOCO NO FINAL DA FUNÇÃO renderAll ---
-    // Garante que o campo "Tipo da Loja" seja preenchido após os dados carregarem
+    
+    // ETAPA 4: Garante que o campo "Tipo da Loja" seja preenchido
     const userLojaId = localStorage.getItem('userLojaId');
     if (userLojaId && userLojaId !== 'admin' && userLojaId !== 'none') {
         const lojaDoUsuario = lojas.find(l => l.id === userLojaId);
@@ -5704,29 +4926,27 @@ function renderAll() {
             document.getElementById('venda-tipo-loja-display').value = lojaDoUsuario.tipo;
         }
     }
-    // --- FIM DO NOVO BLOCO ---
-    // ETAPA 4: ATUALIZA O DASHBOARD UMA ÚNICA VEZ, NO FINAL DE TUDO
-    runDashboardUpdate(); 
-}
-
-// ==========================================================
-//                        FIM DA AÇÃO
-// ==========================================================
-
-
-
-    checkLogin();
-});
-
-
+    
+    // ETAPA 5: Atualiza o Dashboard
+    runDashboardUpdate();
+    
+    // OTIMIZACAO #2: Event Delegation para tabela de vendas
+    const tabelaVendas = document.getElementById('tabela-vendas');
+    if (tabelaVendas) {
+        tabelaVendas.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-table-edit')) {
+                editVenda(e.target.dataset.id);
+            } else if (e.target.classList.contains('btn-table-delete')) {
+                deleteVenda(e.target.dataset.id);
+            }
+        });
+    }
+}})
 
 </script>
 
 </body>
 </html>
 
-
-
 | VP Analytics
-
 
