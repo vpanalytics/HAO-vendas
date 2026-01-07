@@ -2246,6 +2246,9 @@ async function loadDataFromFirebase() {
 
         // Processa os resultados e preenche os arrays locais
         lojas = lojasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+// ADICIONE ESTA LINHA:
+populateVendasFilters(); 
+
         vendas = vendasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         produtos = produtosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         historicoComissao = historicoComissaoSnapshot.docs.map(doc => {
@@ -3781,16 +3784,33 @@ function renderTabelaVendas() {
     }
 
     
+function populateVendasFilters() {
+    const vendasFilterLoja = document.getElementById('vendas-filter-loja');
+    
+    // Verifica se o elemento existe
+    if (!vendasFilterLoja) return;
+    
+    // Limpa o conteúdo atual, garantindo que apenas a opção padrão permaneça
+    // O HTML já tem <option value="">Todas</option>
+    vendasFilterLoja.innerHTML = '<option value="">Todas as Lojas</option>';
 
-
-
-
-    function populateVendasFilters() {
-        vendasFilterLoja.innerHTML = '<option value="">Todas</option>';
-        lojas.forEach(loja => {
-            vendasFilterLoja.innerHTML += `<option value="${loja.id}">${loja.nome}</option>`;
-        });
+    // Verifica se a variável 'lojas' existe e tem dados
+    if (typeof lojas === 'undefined' || !Array.isArray(lojas) || lojas.length === 0) {
+        // Se não houver lojas, apenas a opção padrão será exibida
+        return;
     }
+
+    // Ordena as lojas por nome e adiciona cada uma
+    lojas
+        .sort((a, b) => a.nome.localeCompare(b.nome))
+        .forEach(loja => {
+            const option = document.createElement('option');
+            option.value = loja.id;
+            option.textContent = loja.nome;
+            vendasFilterLoja.appendChild(option);
+        });
+}
+
 
     function exportToCsv(filename, rows) {
         if (!rows || rows.length === 0) {
