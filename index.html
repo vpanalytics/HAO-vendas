@@ -2681,20 +2681,36 @@ function setupComissaoEditing() {
 function setupNavigation() {
     // Pega a permissão de admin do localStorage
     const isUserAdmin = localStorage.getItem('isUserAdmin') === 'true';
+    
+    // LISTA DE E-MAILS RESTRITOS (Adicione mais e-mails aqui)
+    const restrictedAdmins = [
+        'renato@seularprodutos.com.br',
+        'geovani@seularprodutos.com.br'
+    ];
+
+    // Pega o e-mail do usuário logado no Firebase
+    const userEmail = auth.currentUser ? auth.currentUser.email : '';
+    const isRestricted = restrictedAdmins.includes(userEmail);
 
     // Lista das abas que são RESTRITAS a administradores
-    const adminOnlyTabs = ['comissao', 'lojas', 'produtos'];
+    const adminOnlyTabs = ['comissao', 'lojas', 'produtos', 'vendas'];
 
     // Itera sobre todas as abas de navegação
     navTabs.forEach(tab => {
         const tabName = tab.getAttribute('data-tab');
 
-        // Se a aba atual está na lista de abas restritas E o usuário NÃO é admin...
-        if (adminOnlyTabs.includes(tabName) && !isUserAdmin) {
-            // ...esconde o item da lista (o <li> que envolve o link <a>)
+        // CONDIÇÃO: Se for um admin restrito, oculta tudo exceto Dashboard
+        if (isRestricted) {
+            if (tabName !== 'dashboard') {
+                tab.parentElement.classList.add('hidden');
+            } else {
+                tab.parentElement.classList.remove('hidden');
+            }
+        } 
+        // Lógica original para outros usuários
+        else if (adminOnlyTabs.includes(tabName) && !isUserAdmin) {
             tab.parentElement.classList.add('hidden');
         } else {
-            // Caso contrário, garante que a aba esteja visível (para o caso de um admin logar depois de um usuário comum)
             tab.parentElement.classList.remove('hidden');
         }
     });
@@ -2703,32 +2719,22 @@ function setupNavigation() {
     navTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Não permite que um usuário clique em uma aba escondida (segurança extra)
-            if (tab.parentElement.classList.contains('hidden')) {
-                return;
-            }
+            if (tab.parentElement.classList.contains('hidden')) return;
 
             navTabs.forEach(t => t.classList.remove('active-tab'));
             tab.classList.add('active-tab');
             const target = tab.getAttribute('data-tab');
             tabContents.forEach(content => {
                 content.classList.remove('active-content');
-                if (content.id === target) {
-                    content.classList.add('active-content');
-                }
+                if (content.id === target) content.classList.add('active-content');
             });
-            resetLojaForm();
-            resetVendaForm();
             
-            // Carrega a aba sob demanda (Lazy Loading)
             if (typeof window.loadTabOnDemand === 'function') {
                 window.loadTabOnDemand(target);
             }
         });
     });
 }
-
 
 function renderTabelaHistoricoAluguel() {
     const tabelaBody = document.getElementById('tabela-historico-aluguel-body');
@@ -4969,4 +4975,6 @@ function renderAll() {
 </html>
 
 | VP Analytics
+
+
 
